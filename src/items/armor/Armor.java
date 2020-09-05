@@ -31,19 +31,17 @@ public class Armor extends Item {
 	}
 	
 	
-	public static enum Helmet {
+	public static enum Piece {
+		WOODEN_HELMET(Type.HELMET);
 		
+		Type type;
+		
+		Piece(Type type) {
+			this.type = type;
+		}
 	}
 	
-	public static enum Chestplate {
-		
-	}
-	
-	public static enum Leggings {
-		
-	}
-	
-	public static enum Boots {
-		
+	private static enum Type {
+		HELMET, CHESTPLATE, LEGGINGS, BOOTS;
 	}
 }

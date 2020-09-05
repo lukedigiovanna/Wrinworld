@@ -35,7 +35,7 @@ public class Player extends Entity {
 	private int money = 0;
 	private boolean sprint = false;
 	private int maxStamina = 300, stamina = maxStamina, minStamina = maxStamina/3;
-	private int lives = 3;
+	private int lives = 2;
 	
 	public Player(double x, double y) {
 		super(x, y, new Dimension(0.5,1));
@@ -54,13 +54,13 @@ public class Player extends Entity {
 		maxSpeed = 2;
 		
 		inventory = new Inventory(9*4+5,this);
-		inventory.add(new Misc(Misc.Type.MANA_STAR));
-		inventory.add(new Wand(Wand.Type.BLUE_WAND));
-		inventory.add(new Bow());
-		inventory.add(new Wand(Wand.Type.FIRE_WAND));
-		inventory.add(new Javelin());
+//		inventory.add(new Misc(Misc.Type.MANA_STAR));
+//		inventory.add(new Wand(Wand.Type.BLUE_WAND));
+//		inventory.add(new Bow());
+//		inventory.add(new Wand(Wand.Type.FIRE_WAND));
+//		inventory.add(new Javelin());
 //		inventory.add(new BroadSword(BroadSword.Type.DIAMOND));
-//		inventory.add(new Lazer());
+		inventory.add(new Lazer());
 //		for (int i = 0; i < 16; i++)
 //			inventory.add(new Shuriken());
 		inventory.add(new BroadSword(BroadSword.Type.WOODEN));
@@ -77,7 +77,6 @@ public class Player extends Entity {
 			public void keyPressed(KeyEvent e) {
 				if (Player.this.getGame().console().isCommandActive())
 					return;
-				System.out.println(e.getKeyChar());
 				switch (e.getKeyCode()) {
 				case Controls.MOVE_RIGHT:
 					move[3] = true;
@@ -310,8 +309,10 @@ public class Player extends Entity {
 	}
 	
 	public boolean sendToDeathScreen() {
-		if (beenDeadFor > 4)
+		if (beenDeadFor > 4) {
+			useLife();
 			return true;
+		}
 		return false;
 	}
 	

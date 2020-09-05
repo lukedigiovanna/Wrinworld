@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import console.Console;
+import entities.miscellaneous.SummoningPortal;
 import entities.npc.*;
 import entities.player.*;
 import misc.MathUtils;
@@ -78,6 +79,15 @@ public class EntityList implements Serializable {
 		
 		if (closest != null)	
 		closest.speak();
+	}
+	
+	public int portalCount() {
+		int count = 0;
+		for (Entity e : entities) {
+			if (e instanceof SummoningPortal)
+				count++;
+		}
+		return count;
 	}
 	
 	public World getWorld() {

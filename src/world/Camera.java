@@ -8,8 +8,11 @@ import java.util.ArrayList;
 
 import display.ImageProcessor;
 import entities.*;
+import entities.player.Player;
 import entities.projectiles.Projectile;
 import game.GameController;
+import items.Inventory;
+import items.Item;
 import main.Program;
 import misc.*;
 import misc.Dimension;
@@ -109,6 +112,27 @@ public class Camera implements Serializable {
 					//draw it
 					int height = (int)((pHeight/oImg.getHeight())*2); 
 					g.drawImage(hb, pX, pY-height*2, pWidth, height, null);
+				}
+				
+				if (o instanceof Player) {
+					Item item = null;
+					Player p = (Player)o;
+					Inventory inventory = p.getInventory();
+					if (inventory != null)
+						item = inventory.getSelectedItem();
+					Image disp = null;
+					if (item != null)
+						disp = item.getDisplayImage();
+					if (disp != null) {
+						double rot = MathUtils.angle(Mouse.getXOnDisplay(), Mouse.getYOnDisplay(), rx, ry);
+						rot += 3 * Math.PI / 2;
+						int w = disp.getWidth(null) * 4, h = disp.getHeight(null) * 4;
+						double d = 0.5 - 0.5 * item.cooldownStatusPercent();
+						int pd = (int)(d / dimension.width * pixelWidth);
+						g.rotate(rot, rx, ry);
+						g.drawImage(disp, (int)rx - w/2, (int)ry - h - pd, w, h, null);
+						g.rotate(-rot, rx, ry);	
+					}
 				}
 			}
 		}

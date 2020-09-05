@@ -55,6 +55,8 @@ public class Game implements Serializable {
 	
 	private List<EventListener> listeners;
 	
+	private int portalCount;
+	
 	//basically the constructor.. isn't called, though, until the game actually starts and can be called again to reset.
 	public void initiate() {
 		Entity.setGame(this);
@@ -71,7 +73,7 @@ public class Game implements Serializable {
 			new Spawner(0,0,world.width()/2-3,0.005,new Sheep(0,0)),
 		};
 		
-		int portalCount = (int)(world.width() * 0.8);
+		portalCount = (int)(world.width() * 0.6);
 		SummoningPortal[] portals = new SummoningPortal[portalCount];
 		Entity[] entityOrder = {new Slime(0,0), new FireDevil(0,0), new Minion(0,0), new Zombie(0,0), new Skeleton(0,0), new SwordZombie(0,0), new WildBoar(0,0), new Wizard(0,0), new Mage(0,0), new Giant(0,0)};
 		double maxDistance = MathUtils.distance(0, 0, -world.width()/2+3, -world.height()/2+3);
@@ -345,11 +347,13 @@ public class Game implements Serializable {
 		g.setFont(new Font("Arial",Font.ITALIC,16));
 		String[] list = {
 				date.toString(),
-				"X: "+MathUtils.round(player.getX(),0.1)+" Y: "+MathUtils.round(player.getY(),0.1),
+				//"X: "+MathUtils.round(player.getX(),0.1)+" Y: "+MathUtils.round(player.getY(),0.1),
 				player.getHealth().toString(),
 				player.getExperience().toString(),
 				"$"+player.getMoney(),
-				"E: "+entities.get().size()
+				"Portals Left: "+entities.portalCount()+"/"+portalCount,
+				"Lives Left: "+player.getLives()
+				//"E: "+entities.get().size()
 		};
 		for (int i = 0; i < list.length; i++) 
 			Graphics2.outlineText(g, list[i], 5, my+mh+22*(i+1), Color.BLACK);

@@ -39,13 +39,17 @@ public class Bow extends Weapon {
 		return (this.durability <= 0);
 	}
 	
+	private static final Image
+		display = Program.getImage("items/weapons/bow.png"),
+		icon = Program.getImage("items/weapons/bowicon.png");
+	
 	@Override
 	public Image getDisplayImage() {
-		return Program.getImage("items/weapons/bow.png");
+		return display;
 	}
 
 	@Override
 	public Image getIconImage() {
-		return Program.getImage("items/weapons/bowicon.png");
+		return icon;
 	}
 }

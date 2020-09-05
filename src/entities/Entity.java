@@ -374,15 +374,15 @@ public abstract class Entity extends WorldObject implements Serializable {
 		}
 		
 		//draw the item on the entity
-		Item item = null;
-		if (inventory != null)
-			item = inventory.getSelectedItem();
-		Image disp = null;
-		if (item != null)
-			disp = item.getDisplayImage();
-		if (disp != null) {
-			g.drawImage(disp, (int)(itemPosition.x*World.PIXELS_TO_METER), (int)(itemPosition.y*World.PIXELS_TO_METER), disp.getWidth(null), disp.getHeight(null), null);
-		}
+//		Item item = null;
+//		if (inventory != null)
+//			item = inventory.getSelectedItem();
+//		Image disp = null;
+//		if (item != null)
+//			disp = item.getDisplayImage();
+//		if (disp != null) {
+//			g.drawImage(disp, (int)(itemPosition.x*World.PIXELS_TO_METER), (int)(itemPosition.y*World.PIXELS_TO_METER), disp.getWidth(null), disp.getHeight(null), null);
+//		}
 		
 		//return
 		return i;

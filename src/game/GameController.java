@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 import display.DisplayController;
+import display.GameDisplay;
 
 //works with the current game that is loaded/being played
 public class GameController {
@@ -13,9 +14,20 @@ public class GameController {
 	private static boolean initiated = false;
 	
 	public static void init() {
-		if (!initiated)
+		if (!initiated) {
+			game = new Game();
 			game.initiate();
+			//DisplayController.getDisplay(DisplayController.GAME_DISPLAY).activateListeners();
+			System.out.println("initiated");
+		}
 		initiated = true;
+	}
+	
+	public static void endGame() {
+		DisplayController.getDisplay(DisplayController.GAME_DISPLAY).removeListeners();
+		((GameDisplay)DisplayController.getDisplay(DisplayController.GAME_DISPLAY)).setAddedListeners(false);
+		game = null;
+		initiated = false;
 	}
 	
 	private static String fp = ""; //nothing to start

@@ -22,6 +22,7 @@ public class SummoningPortal extends Entity {
 	public SummoningPortal(double x, double y, double health) {
 		super(x,y,1.5,1.5);
 		initList();
+		this.team = Team.ENEMY;
 		this.setHealth(new Health(health));
 		this.setKnockbackValue(0);
 		this.xpOnDrop = MathUtils.randomInRange(10, 30);
@@ -40,8 +41,8 @@ public class SummoningPortal extends Entity {
 		return this;
 	}
 	
-	public SummoningPortal setChances(Double ... doubles) {
-		for (Double d : doubles)
+	public SummoningPortal setChances(double ... doubles) {
+		for (double d : doubles)
 			this.chances.add(d);
 		return this;
 	}

@@ -45,7 +45,7 @@ public abstract class Entity extends WorldObject implements Serializable {
 	protected boolean showHealthBar = true;
 	protected Inventory inventory; //entities have a default holding capacity of 3 items
 	protected Position itemPosition = new Position(0,0); //relative to the entities x, y
-	private int mana = 0, maxMana = 0;
+	private double mana = 0, maxMana = 0;
 	private double resistance = 0; //0 defelcts no damage and 1 deflects all damage (effectivly invincible)
 	
 	private Vector2D[] velocityHistory = new Vector2D[10];
@@ -212,6 +212,9 @@ public abstract class Entity extends WorldObject implements Serializable {
 		}
 		
 		individualUpdate();
+		
+		this.addMana(0.25);
+		
 		
 		this.move();
 		velocity.applyAcceleration();
@@ -408,22 +411,22 @@ public abstract class Entity extends WorldObject implements Serializable {
 		this.maxMana = max;
 	}
 	
-	public void setMana(int mana) {
+	public void setMana(double mana) {
 		this.mana = MathUtils.clip(mana, 0, maxMana);
 	}
 	
-	public boolean addMana(int amt) {
+	public boolean addMana(double amt) {
 		if (this.mana >= this.maxMana)
 			return false;
 		this.mana = MathUtils.max(this.mana+amt, this.maxMana);
 		return true;
 	}
 	
-	public int getMana() {
+	public double getMana() {
 		return this.mana;
 	}
 	
-	public int getMaxMana() {
+	public double getMaxMana() {
 		return this.maxMana;
 	}
 	

@@ -87,6 +87,11 @@ public abstract class Display extends BufferedImage {
 		listeners.remove(listener);
 	}
 	
+	public void removeListeners() {
+		this.deactivateListeners();
+		listeners.clear();
+	}
+	
 	//SUPPORTED LISTENERS: key, mouse, mousemotion, mousewheel
 	public void activateListeners() {
 		panel = Program.panel;

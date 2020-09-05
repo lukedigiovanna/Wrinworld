@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import display.ImageProcessor;
 import entities.*;
+import entities.projectiles.Projectile;
 import game.GameController;
 import main.Program;
 import misc.*;
@@ -91,6 +92,12 @@ public class Camera implements Serializable {
 			
 			BufferedImage oImg = o.getImage();
 			double rotation = o.getRotation();
+			while (rotation < 0)
+				rotation += Math.PI * 2;
+			while (rotation > Math.PI * 2)
+				rotation%=(Math.PI*2);
+			if (rotation > Math.PI/2 && rotation < Math.PI*3/2)
+				rotation+=Math.PI;
 			double rx = pX+pWidth/2, ry = pY+pHeight/2;
 			g.rotate(rotation,rx,ry); //is rotated about the center of the thing
 			g.drawImage(ImageProcessor.darken(oImg,1-o.getLightValue()), pX, pY, pWidth, pHeight, null);

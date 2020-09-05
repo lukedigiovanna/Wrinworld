@@ -150,9 +150,9 @@ public class PlayerInventoryGUI extends GUI {
 		//draw the inventory
 		inv = inventory.getInventoryImage();
 		g.drawImage(inv, invX, invY, invWidth, invHeight, null);
-		//draw the equipment
-		equip = inventory.getEquipmentImage();
-		g.drawImage(equip, equipX, equipY, equipWidth, equipHeight, null);
+		//draw the equipment (not used currently)
+//		equip = inventory.getEquipmentImage();
+//		g.drawImage(equip, equipX, equipY, equipWidth, equipHeight, null);
 		//if the selected item is not null then draw it at the cursor
 		if (heldItem != null) {
 			int mx = Mouse.getXOnDisplay();

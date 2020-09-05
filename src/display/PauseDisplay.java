@@ -26,7 +26,7 @@ public class PauseDisplay extends Display {
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 					DisplayController.setDisplay(DisplayController.GAME_DISPLAY);
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
-					GameController.saveCurrentGame("game");
+					GameController.endGame();
 					DisplayController.setDisplay(DisplayController.MAIN_DISPLAY);
 				}
 			}

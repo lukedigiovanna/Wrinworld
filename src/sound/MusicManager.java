@@ -5,7 +5,7 @@ import javax.sound.sampled.Clip;
 public class MusicManager {
 	private static Clip currentSong;
 	private static String currentSongName = "";
-	private static boolean muted = true;
+	private static boolean muted = false;
 	
 	public static void changeSong(String fp) {
 		if (muted) return;

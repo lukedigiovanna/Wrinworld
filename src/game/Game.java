@@ -71,7 +71,7 @@ public class Game implements Serializable {
 			new Spawner(0,0,world.width()/2-3,0.005,new Sheep(0,0)),
 		};
 		
-		int portalCount = (int)(world.width());
+		int portalCount = (int)(world.width() * 0.8);
 		SummoningPortal[] portals = new SummoningPortal[portalCount];
 		Entity[] entityOrder = {new Slime(0,0), new FireDevil(0,0), new Minion(0,0), new Zombie(0,0), new Skeleton(0,0), new SwordZombie(0,0), new WildBoar(0,0), new Wizard(0,0), new Mage(0,0), new Giant(0,0)};
 		double maxDistance = MathUtils.distance(0, 0, -world.width()/2+3, -world.height()/2+3);
@@ -81,7 +81,7 @@ public class Game implements Serializable {
 			double y = MathUtils.round(MathUtils.randomInRange(-world.height()/2+3, world.height()/2-3), 0.5);
 			//find distance to center.. 
 			double distance = MathUtils.distance(0, 0, x, y);
-			while (distance < 3) {
+			while (distance < 3 || world.getGridComponent(x, y).hasCollision()) {
 				x = MathUtils.round(MathUtils.randomInRange(-world.width()/2+3, world.width()/2-3), 0.5);
 				y = MathUtils.round(MathUtils.randomInRange(-world.height()/2+3, world.height()/2-3), 0.5);
 				//find distance to center.. 
@@ -91,7 +91,7 @@ public class Game implements Serializable {
 			//percent identifies difficulty.. 
 			int mobs = MathUtils.randomInRange(1, 3);
 			Entity[] ents = new Entity[mobs];
-			Double[] chances = new Double[mobs];
+			double[] chances = new double[mobs];
 			for (int j = 0; j < mobs; j++) {
 				double offset = MathUtils.randomInRange(-percent/2, percent/2);
 				double percentThroughList = percent+offset;
@@ -116,8 +116,6 @@ public class Game implements Serializable {
 		NPC john = new John(11,-5);
 	
 		entities.add(player);
-		entities.add(npc);
-		entities.add(john);
 		for (Spawner spawner : spawners)
 			entities.add(spawner);
 		for (SummoningPortal p : portals) 
@@ -484,6 +482,10 @@ public class Game implements Serializable {
 		
 		double radian = MathUtils.angle(this.player().getCenterX(), this.player().getCenterY(), xPos, yPos);
 		return radian;
+	}
+	
+	public void end() {
+		
 	}
 	
 	//GETTERS

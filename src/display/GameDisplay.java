@@ -19,6 +19,11 @@ public class GameDisplay extends Display {
 	}
 	
 	private boolean addedListeners = false;
+	
+	public void setAddedListeners(boolean value) {
+		addedListeners = value;
+	}
+	
 	public void individualInit() {
 		GameController.init();
 		
@@ -32,7 +37,6 @@ public class GameDisplay extends Display {
 	}
 	
 	public void unInit() {
-		//GameController.saveCurrentGame("game");
 	}
 	
 	public void individualUpdate() {

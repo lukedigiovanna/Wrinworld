@@ -19,6 +19,7 @@ public class DeadDisplay extends Display {
 				switch(e.getKeyCode()) {
 				case KeyEvent.VK_ESCAPE:
 					DisplayController.setDisplay(DisplayController.MAIN_DISPLAY);
+					GameController.endGame();
 					break;
 				}
 			}

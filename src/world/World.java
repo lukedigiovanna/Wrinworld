@@ -8,7 +8,9 @@ import javax.swing.JOptionPane;
 
 import game.GameController;
 import misc.Dimension;
+import misc.MathUtils;
 import misc.Position;
+import world.gridComponent.GridComponent;
 
 //just holds the collection of grid pieces that makes the world
 //does not contain logic for entity interactions just stores the data of 
@@ -50,7 +52,7 @@ public class World implements Serializable {
 	}
 	
 	public static final int PIXELS_TO_METER = 16;
-	public static final double DEFAULT_CHUNK_SIZE = 1;
+	public static final double DEFAULT_CHUNK_SIZE = 8;
 	
 	private double chunkSize = DEFAULT_CHUNK_SIZE;
 	private double width, height;
@@ -150,6 +152,17 @@ public class World implements Serializable {
 			for (int y = 0; y < chunks[x].length; y++)
 				if (chunks[x][y].contains(o))
 					return chunks[x][y];
+		return null;
+	}
+	
+	public GridComponent getGridComponent(double x, double y) {
+		x = MathUtils.round(x, 0.5);
+		y = MathUtils.round(y, 0.5);
+		List<WorldObject> chunk = getChunk(x, y);
+		for (WorldObject o : chunk) {
+			if (o instanceof GridComponent && o.getX() == x && o.getY() == y) 
+				return (GridComponent)o;
+		}
 		return null;
 	}
 	

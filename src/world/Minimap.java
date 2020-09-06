@@ -12,7 +12,6 @@ public class Minimap implements Serializable {
 	
 	private World world;
 	private WorldObject focus;
-	private Game game;
 	
 	private double radius = 20;
 	private double resolution = 0.25; //how much space in the world per pixel
@@ -22,7 +21,6 @@ public class Minimap implements Serializable {
 	public Minimap(Game game) {
 		world = game.getWorld();
 		focus = game.getCamera().getFocus();
-		this.game = game;
 		
 		Thread t = new Thread(new Runnable() {
 			public void run() {
@@ -44,7 +42,6 @@ public class Minimap implements Serializable {
 		Graphics g = img.getGraphics();
 		double x = focus.getX(), y = focus.getY(); //the middle
 		List<WorldObject> list = world.get(x-radius,y-radius,radius*2,radius*2);
-		int size = (int)(img.getWidth()/radius*resolution);
 		for (int k = list.size()-1; k >= 0; k--) {
 			WorldObject o = list.get(k);
 			//if the object is not within viewing of the map

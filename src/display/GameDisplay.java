@@ -1,7 +1,6 @@
 package display;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.util.EventListener;
 
 import game.GameController;

@@ -6,9 +6,6 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-
-import console.Console;
 import main.Panel;
 import main.Program;
 

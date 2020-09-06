@@ -16,6 +16,8 @@ import misc.Dimension;
 import sound.SoundManager;
 
 public class SwordZombie extends Enemy {
+	private static final long serialVersionUID = 1L;
+
 	public SwordZombie(double x, double y) {
 		super(x,y,0.5,1.0);
 		this.health = new Health(35);

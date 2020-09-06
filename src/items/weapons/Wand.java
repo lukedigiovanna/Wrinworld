@@ -9,7 +9,8 @@ import game.GameController;
 import misc.MathUtils;
 
 public class Wand extends Weapon {
-	
+	private static final long serialVersionUID = 1L;
+
 	private Type type;
 	
 	public Wand(Type type) {

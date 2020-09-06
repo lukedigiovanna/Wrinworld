@@ -13,6 +13,8 @@ import items.consumables.Food;
 import items.misc.Miscellaneous;
 
 public class Sheep extends Animal {
+	private static final long serialVersionUID = 1L;
+
 	public Sheep(double x, double y) {
 		super(x,y,0.6875,0.5);
 		this.setHealth(new Health(15));

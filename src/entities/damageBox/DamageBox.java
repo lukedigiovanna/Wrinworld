@@ -12,8 +12,9 @@ import misc.Position;
 import misc.Vector2D;
 
 public class DamageBox extends Entity {
+	private static final long serialVersionUID = 1L;
 	
-	private boolean destroyOnImpact = false; //default
+	private boolean destroyOnImpact = false; // default
 	private double power = 1; //default
 	private Entity owner;
 	private int lifeSpan = 20*999999;

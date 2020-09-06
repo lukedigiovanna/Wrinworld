@@ -6,6 +6,8 @@ import entities.Entity;
 import main.Program;
 
 public class ManaStar extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	public ManaStar(double x, double y) {
 		super(x,y,0.5,0.5);
 	}

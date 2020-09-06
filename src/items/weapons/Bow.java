@@ -1,20 +1,13 @@
 package items.weapons;
 
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-
-import entities.player.Player;
 import entities.projectiles.Projectile;
-import game.Game;
-import game.GameController;
 import main.Program;
-import misc.MathUtils;
-import misc.Mouse;
 import misc.Vector2D;
 import sound.SoundManager;
 
 public class Bow extends Weapon {
-	private int numOfArrows = 0;
+	private static final long serialVersionUID = 1L;
 	
 	public Bow() {
 		super("Bow");

@@ -1,21 +1,17 @@
 package entities;
 
 import misc.*;
-import world.World;
 import world.WorldObject;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import display.ImageProcessor;
 import game.Game;
 import items.Inventory;
-import items.Item;
 import entities.animals.Animal;
 import entities.enemies.Enemy;
 import entities.miscellaneous.*;
@@ -28,7 +24,7 @@ import world.LightSource;
 
 // contains a position and some rudimentary functions that are useful
 
-public abstract class Entity extends WorldObject implements Serializable {
+public abstract class Entity extends WorldObject {
 	private static final long serialVersionUID = 1L;
 	
 	private static Game gameToInitializeTo = null;

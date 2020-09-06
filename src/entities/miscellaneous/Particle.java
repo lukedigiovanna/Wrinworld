@@ -10,6 +10,8 @@ import misc.MathUtils;
 import misc.Vector2D;
 
 public class Particle extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	private Type type;
 	private int lifeSpan;
 	

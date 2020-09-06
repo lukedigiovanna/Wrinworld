@@ -6,10 +6,10 @@ import java.awt.image.BufferedImage;
 
 import display.ImageProcessor;
 import entities.Entity;
-import entities.ItemEntity;
 import main.Program;
 
 public class Coin extends Entity {
+	private static final long serialVersionUID = 1L;
 	
 	private Type type;
 	

@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 import entities.Entity;
 import game.Game;
-import items.consumables.Food;
 import misc.MathUtils;
 
 //how this needs to work:

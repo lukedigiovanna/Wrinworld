@@ -10,14 +10,14 @@ import entities.damageBox.DamageBox;
 import entities.miscellaneous.Coin;
 import entities.player.Player;
 import items.misc.Miscellaneous;
-import main.Program;
 import misc.Dimension;
 import misc.MathUtils;
 import misc.Position;
 import misc.Vector2D;
-import sound.SoundManager;
 
 public class Slime extends Enemy {
+	private static final long serialVersionUID = 1L;
+
 	private Animation ani;
 	
 	public Slime(double x, double y) {

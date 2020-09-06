@@ -7,17 +7,15 @@ import java.awt.*;
 import java.awt.Point;
 import java.awt.image.*;
 
-import java.util.List;
-
-import java.io.*;
 
 import world.*;
 import world.gridComponent.*;
 import misc.*;
-import entities.LocationHolder;
 import misc.Dimension;
 
 public class MapMakerPanel extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	private World world;
 	private Camera camera;
 	
@@ -105,7 +103,7 @@ public class MapMakerPanel extends JPanel {
 		});
 		
 		GridComponent.Component[] comps = GridComponent.COMPONENTS;
-		cb = new JComboBox(comps);
+		cb = new JComboBox<Object>(comps);
 		add(cb);
 		
 		final JButton toggleWall = new JButton("Toggle wall on?");
@@ -134,7 +132,7 @@ public class MapMakerPanel extends JPanel {
 		});
 		t.start();
 	}	
-	JComboBox cb;
+	JComboBox<Object> cb;
 	
 	private boolean putWall = false;
 	public void drawTile(MouseEvent e) {
@@ -167,8 +165,6 @@ public class MapMakerPanel extends JPanel {
 		g.drawImage(camera.get(world, null), 0, 0, img.getWidth(), img.getHeight(), null);
 		//what the fuck
 		//ok now draw the coordinate numbers
-		double x = camera.position().x, y = camera.position().y;
-		double width = camera.dimension().width, height = camera.dimension().height;
 		g.setColor(Color.BLACK);
 		g.fillRect(img.getWidth()/2-1, 0, 2, img.getHeight());
 		g.fillRect(0, img.getHeight()/2, img.getWidth(), 2);

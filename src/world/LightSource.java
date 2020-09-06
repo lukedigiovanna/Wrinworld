@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 import misc.MathUtils;
 
 public class LightSource extends WorldObject {
+	private static final long serialVersionUID = 1L;
+
 	private double power = 0; //how much
 	
 	public LightSource(double x, double y, double power) {

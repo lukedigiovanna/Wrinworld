@@ -1,13 +1,10 @@
 package world;
 
-import java.awt.Point;
 import java.io.*;
 import java.util.*;
 
 import javax.swing.JOptionPane;
 
-import game.GameController;
-import misc.Dimension;
 import misc.MathUtils;
 import misc.Position;
 import world.gridComponent.GridComponent;

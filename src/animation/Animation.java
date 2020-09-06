@@ -1,6 +1,5 @@
 package animation;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.Serializable;
@@ -72,7 +71,6 @@ public class Animation implements Serializable {
 		return looped;
 	}
 	
-	private int loops = 0;
 	private boolean looped = false;
 	
 	public void update() {
@@ -84,7 +82,6 @@ public class Animation implements Serializable {
 		if (timer >= wait && frames.size() > 0) {
 			//next frame
 			if (index >= frames.size()-2) {
-				loops++;
 				looped = true;
 			}
 			index = (index+1)%frames.size();

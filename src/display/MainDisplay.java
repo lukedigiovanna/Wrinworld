@@ -75,7 +75,7 @@ public class MainDisplay extends Display {
 		g.setColor(Color.GRAY);
 		g.setFont(new Font("Arial",Font.ITALIC,35));
 		String s = "Press any key to continue";
-		//Graphics2.outlineText(g, s, getWidth()/2-g.getFontMetrics().stringWidth(s)/2, getHeight()/2+getHeight()/4, Color.BLACK);
+		Graphics2.outlineText(g, s, getWidth()/2-g.getFontMetrics().stringWidth(s)/2, getHeight()/2+getHeight()/4, Color.BLACK);
 		
 		drawButtons(g);
 	}

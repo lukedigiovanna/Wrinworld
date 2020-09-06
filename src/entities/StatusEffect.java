@@ -22,6 +22,9 @@ public class StatusEffect {
 				break;
 			case SPEED:
 				owner.setSpeedMultiplier(owner.getSpeedMultiplier()-0.5);
+				break;
+			default:
+				break;
 			}
 			active = false;
 		}

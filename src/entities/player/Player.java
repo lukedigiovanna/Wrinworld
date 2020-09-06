@@ -6,9 +6,7 @@ import java.awt.image.BufferedImage;
 
 import game.*;
 import entities.*;
-import entities.miscellaneous.Particle;
 import entities.miscellaneous.Trader;
-import entities.projectiles.Projectile;
 import main.Program;
 import misc.*;
 import misc.Dimension;
@@ -16,16 +14,11 @@ import sound.SoundManager;
 import animation.Animation;
 import display.popup.PopupBar;
 import items.*;
-import items.consumables.Misc;
-import items.weapons.Bow;
-import items.weapons.BroadSword;
-import items.weapons.Javelin;
-import items.weapons.Lazer;
-import items.weapons.Shuriken;
-import items.weapons.Wand;
+import items.weapons.*;
 import world.*;
 
 public class Player extends Entity {
+	private static final long serialVersionUID = 1L;
 	
 	transient KeyAdapter key;
 	transient MouseAdapter mouse;

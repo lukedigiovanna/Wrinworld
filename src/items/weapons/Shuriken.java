@@ -7,6 +7,8 @@ import main.Program;
 import misc.Vector2D;
 
 public class Shuriken extends Weapon {
+	private static final long serialVersionUID = 1L;
+
 	public Shuriken() {
 		super("Shuriken");
 		cooldownPeriod = 0;

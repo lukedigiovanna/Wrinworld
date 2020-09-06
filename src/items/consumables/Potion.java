@@ -9,6 +9,8 @@ import items.Item;
 import main.Program;
 
 public class Potion extends Item {
+	private static final long serialVersionUID = 1L;
+
 	private Type type;
 	
 	public Potion(Type type) {
@@ -27,6 +29,8 @@ public class Potion extends Item {
 			break;
 		case QUICK_FEET:
 			this.owner.addStatusEffect(StatusEffect.Effect.SPEED, 300);
+			break;
+		default:
 			break;
 		}
 		used = true;

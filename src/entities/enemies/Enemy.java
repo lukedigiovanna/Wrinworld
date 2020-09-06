@@ -1,13 +1,12 @@
 package entities.enemies;
 
 import entities.*;
-import entities.player.Player;
 import main.Program;
 import misc.MathUtils;
 
-import java.util.*;
-
 public abstract class Enemy extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	public Enemy(double x, double y, double width, double height) {
 		super(x,y,width,height);
 		team = Entity.Team.ENEMY;
@@ -45,9 +44,6 @@ public abstract class Enemy extends Entity {
 		double thisX = this.getX(), thisY = this.getY();
 		double theirWidth = teammate.getWidth(), theirHeight = teammate.getHeight()/2;
 		double theirX = teammate.getX(), theirY = teammate.getY()+theirHeight;
-		Player player = this.getGame().player();
-		double playerWidth = player.getWidth(), playerHeight = player.getHeight();
-		double playerX = player.getCenterX(), playerY = player.getCenterY();
 		double leftBound = MathUtils.min(theirX, thisX), rightBound = MathUtils.max(theirX, thisX), 
 				topBound = MathUtils.min(theirY, thisY), bottomBound = MathUtils.max(theirY, thisY);
 		if (!(theirX < rightBound && theirX+theirWidth > leftBound))

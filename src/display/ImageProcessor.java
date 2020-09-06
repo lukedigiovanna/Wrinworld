@@ -3,8 +3,6 @@ package display;
 import java.awt.*;
 import java.awt.image.*;
 
-import misc.MathUtils;
-
 public class ImageProcessor {
 	/*
 	 * glossary of functions
@@ -315,10 +313,6 @@ public class ImageProcessor {
 		return num;
 	}
 	
-	private static Color getColor(int r, int g, int b) {
-		return new Color(r,g,b);
-	}
-	
 	private static Color getColor(int r, int g, int b, int a) {
 		return new Color(r,g,b,a);
 	}
@@ -326,21 +320,6 @@ public class ImageProcessor {
 	private static Color getColor(int rgb) {
 		Color c = new Color(rgb,true); //the true means that it has alpha
 		return c;
-	}
-	
-	private static int getRed(int rgbColor) {
-		int red = (rgbColor >> 16) & 0xFF;
-		return red;
-	}
-	
-	private static int getGreen(int rgbColor) {
-		int green = (rgbColor >> 8) & 0xFF;
-		return green;
-	}
-	
-	private static int getBlue(int rgbColor) {
-		int blue = rgbColor & 0xFF;
-		return blue;
 	}
 	
 	private static int[][] getRGB(BufferedImage img) {

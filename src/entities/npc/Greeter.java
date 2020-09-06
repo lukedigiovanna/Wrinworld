@@ -7,10 +7,10 @@ import entities.Entity;
 import entities.Path;
 import main.Program;
 import misc.Graphics2;
-import misc.Vector2D;
 import misc.Point;
 
 public class Greeter extends NPC {
+	private static final long serialVersionUID = 1L;
 	
 	public Greeter(double x, double y) {
 		super(NPC.Character.GREETER,x, y);

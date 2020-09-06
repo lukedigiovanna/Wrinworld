@@ -28,7 +28,6 @@ import entities.enemies.*;
 import entities.miscellaneous.*;
 import entities.npc.*;
 import entities.player.*;
-import entities.projectiles.*;
 import items.Item;
 import world.*;
 
@@ -47,7 +46,6 @@ public class Game implements Serializable {
 	
 	private Console console = new Console();
 	private boolean showQBGUI = false;
-	private int age = 0;
 	
 	private QuestBookGUI qbGUI;
 	
@@ -65,7 +63,6 @@ public class Game implements Serializable {
 		entities = new EntityList(world);
 		
 		player = new Player(0,0);
-		NPC npc = new Greeter(1,0);
 		
 		Spawner[] spawners = {
 			new Spawner(0,0,world.width()/2,0.005,new Pig(0,0)),
@@ -114,8 +111,6 @@ public class Game implements Serializable {
 			System.out.println(p);
 			portals[i] = p;
 		}
-		
-		NPC john = new John(11,-5);
 	
 		entities.add(player);
 		for (Spawner spawner : spawners)
@@ -304,7 +299,6 @@ public class Game implements Serializable {
 			if (o != null)
 				o.queueLightValue(date.lightvalue());
 		//first update shit like light values
-		ArrayList<LightSource> lightSources = new ArrayList<LightSource>();
 		for (WorldObject l : objects) 
 			if (l instanceof LightSource)
 				for (WorldObject o : objects)
@@ -317,8 +311,6 @@ public class Game implements Serializable {
 		
 		for (WorldObject l : objects)
 			l.updateLightValue();
-		
-		age++;
 	}
 
 	//called by a thread responsible for drawing
@@ -362,7 +354,6 @@ public class Game implements Serializable {
 		Item i = player().getInventory().getSelectedItem();
 		int x = 5, y = my+40+mh+22*(list.length+2);
 		if (i != null) {
-			Image icoImg = i.getIconImage();
 			g.drawImage(i.getIconImage(), 5, my+mh+22*(list.length+1), 30, 30, null);
 			Graphics2.outlineText(g, i.getName(), 5, my+30+mh+22*(list.length+2), Color.BLACK);	
 			int w = 50, h = 8;

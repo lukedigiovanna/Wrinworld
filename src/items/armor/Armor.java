@@ -6,6 +6,8 @@ import items.*;
 import main.Program;
 
 public class Armor extends Item {
+	private static final long serialVersionUID = 1L;
+
 	private Piece piece;
 	
 	public Armor(Piece piece) {

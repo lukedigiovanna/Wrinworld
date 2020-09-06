@@ -13,11 +13,12 @@ import items.weapons.Javelin;
 import items.weapons.Shuriken;
 import main.Program;
 import misc.Dimension;
-import misc.MathUtils;
 import misc.Vector2D;
 
 //includes stuff like arrows, bullets, potions, etc.
 public class Projectile extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	private DamageBox damageBox;
 	private int lifeSpan = 1000;
 	private Type type;
@@ -116,6 +117,8 @@ public class Projectile extends Entity {
 			break;
 		case ROCK:
 			angle+=((double)age/3);
+			break;
+		default:
 			break;
 		}
 		

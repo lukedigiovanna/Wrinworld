@@ -6,6 +6,7 @@ import entities.Entity;
 import main.Program;
 
 public class John extends NPC {
+	private static final long serialVersionUID = 1L;
 
 	public John(double x, double y) {
 		super(NPC.Character.JOHN, x, y);

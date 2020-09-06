@@ -8,13 +8,13 @@ import entities.Entity;
 import entities.EntityDrop;
 import entities.Health;
 import entities.miscellaneous.Coin;
-import entities.miscellaneous.Particle;
 import entities.player.Player;
-import entities.projectiles.Projectile;
 import main.Program;
 import misc.*;
 
 public class WildBoar extends Enemy {
+	private static final long serialVersionUID = 1L;
+
 	public WildBoar(double x, double y) {
 		super(x,y,12/16.0,7/16.0);
 		this.health = new Health(25);

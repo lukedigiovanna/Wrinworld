@@ -1,13 +1,13 @@
 package quests;
 
 import entities.npc.*;
-import entities.player.*;
 import items.weapons.*;
-import items.consumables.*;
 import game.Game;
 import misc.*;
 
 public class MainQuestBook extends QuestBook {
+	private static final long serialVersionUID = 1L;
+
 	private Quest[] quests = {
 		new Quest("Getting Started","Talk to the greeter at the start","-3xp&-x1 Wooden Sword", 
 			new Questable() { 

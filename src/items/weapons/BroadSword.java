@@ -9,7 +9,8 @@ import misc.Position;
 import misc.Vector2D;
 
 public class BroadSword extends Weapon {
-	
+	private static final long serialVersionUID = 1L;
+
 	private transient Image displayImage, iconImage;
 	private double damage;
 	

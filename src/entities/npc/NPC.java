@@ -1,18 +1,15 @@
 package entities.npc;
 
-import java.awt.*;
-import java.awt.image.*;
-
 import display.popup.Conversation;
 import display.popup.PopupBar;
 import entities.*;
-import main.Program;
 import misc.Dimension;
-import misc.Graphics2;
 
 //conversates with the player
 //NON-PLAYER CHARACTER -- a character to the story. can be an enemy
 public abstract class NPC extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	protected String name, title;
 	private Conversation convo;
 	protected boolean alerted = true;

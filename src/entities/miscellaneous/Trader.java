@@ -8,12 +8,11 @@ import entities.player.Player;
 import items.*;
 import items.consumables.*;
 import items.weapons.*;
-import items.armor.*;
-import items.misc.*;
 import main.Program;
 import misc.MathUtils;
 
 public class Trader extends Entity {
+	private static final long serialVersionUID = 1L;
 	
 	private Product[] products;
 	private Preset preset;

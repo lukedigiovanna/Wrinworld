@@ -13,6 +13,8 @@ import misc.Vector2D;
 import sound.SoundManager;
 
 public class XpOrb extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	private int count = 0;
 	
 	public XpOrb(double x, double y, int size) {

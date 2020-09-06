@@ -1,16 +1,14 @@
 package entities;
 
 import java.awt.Image;
-import java.util.List;
 
 import items.Item;
 import main.Program;
-import world.WorldObject;
-import world.gridComponent.GridComponent;
 
 //NOTE THAT ONLY PLAYERS CAN PICK UP ITEM ENTITIES.
 public class ItemEntity extends Entity {
-	
+	private static final long serialVersionUID = 1L;
+
 	private Item item;
 	private double bob = 0.0;
 	
@@ -39,20 +37,20 @@ public class ItemEntity extends Entity {
 			this.destroy();
 			
 		//ok now lets look at grid components around us.. 
-		List<WorldObject> componentsAround = this.getObjectsAround();
-		for (WorldObject o : componentsAround) {
-			if (this.colliding(o)) {
-				//now cast it to a grid component.. cuz it most likely is one
-				GridComponent c = null;
-				try {
-					c = (GridComponent) o;
-				} catch (ClassCastException e) {
-					continue;
-				}
+		// List<WorldObject> componentsAround = this.getObjectsAround();
+		// for (WorldObject o : componentsAround) {
+		// 	if (this.colliding(o)) {
+		// 		//now cast it to a grid component.. cuz it most likely is one
+		// 		GridComponent c = null;
+		// 		try {
+		// 			c = (GridComponent) o;
+		// 		} catch (ClassCastException e) {
+		// 			continue;
+		// 		}
 				
-				//if (c.)
-			}
-		}
+		// 		//if (c.)
+		// 	}
+		// }
 	}
 
 	@Override

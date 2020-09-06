@@ -8,14 +8,14 @@ import entities.EntityDrop;
 import entities.Health;
 import entities.damageBox.DamageBox;
 import entities.miscellaneous.Coin;
-import entities.miscellaneous.Particle;
 import entities.player.Player;
-import entities.projectiles.Projectile;
 import main.Program;
 import misc.*;
 import misc.Dimension;
 
 public class Minion extends Enemy {
+	private static final long serialVersionUID = 1L;
+
 	public Minion(double x, double y) {
 		super(x,y,0.5,0.5);
 		this.health = new Health(10);

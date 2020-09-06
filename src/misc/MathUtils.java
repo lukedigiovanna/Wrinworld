@@ -1,9 +1,5 @@
 package misc;
 
-import java.awt.Point;
-
-import game.GameController;
-
 public class MathUtils {
 	public static int clip(int val, int min, int max) {
 		if (val < min)

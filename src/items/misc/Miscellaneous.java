@@ -7,7 +7,8 @@ import items.Item;
 import main.Program;
 
 public class Miscellaneous extends Item {
-	
+	private static final long serialVersionUID = 1L;
+
 	private Type type;
 	
 	public Miscellaneous(Type type) {
@@ -24,6 +25,9 @@ public class Miscellaneous extends Item {
 			break;
 		case WOOL:
 			GameController.game().console().log("Used wool");
+			break;
+		default:
+			break;
 		}
 		used = true;
 	}

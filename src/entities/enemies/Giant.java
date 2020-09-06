@@ -6,17 +6,15 @@ import java.awt.image.BufferedImage;
 import entities.Entity;
 import entities.EntityDrop;
 import entities.Health;
-import entities.damageBox.DamageBox;
 import entities.miscellaneous.Coin;
 import entities.player.Player;
 import entities.projectiles.Projectile;
-import items.consumables.Food;
 import main.Program;
 import misc.*;
-import misc.Dimension;
-import sound.SoundManager;
 
 public class Giant extends Enemy {
+	private static final long serialVersionUID = 1L;
+
 	public Giant(double x, double y) {
 		super(x,y,1.0,2.0);
 		this.health = new Health(70);

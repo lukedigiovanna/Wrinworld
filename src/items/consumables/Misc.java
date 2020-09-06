@@ -2,13 +2,12 @@ package items.consumables;
 
 import java.awt.Image;
 
-import entities.player.Player;
 import items.Item;
 import main.Program;
-import sound.SoundManager;
 
 public class Misc extends Item {
-	
+	private static final long serialVersionUID = 1L;
+
 	private Type type;
 	private boolean consumed = false;
 	

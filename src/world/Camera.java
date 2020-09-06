@@ -1,7 +1,6 @@
 package world;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,8 +8,6 @@ import java.util.ArrayList;
 import display.ImageProcessor;
 import entities.*;
 import entities.player.Player;
-import entities.projectiles.Projectile;
-import game.GameController;
 import items.Inventory;
 import items.Item;
 import main.Program;

@@ -7,6 +7,8 @@ import misc.MathUtils;
 import misc.Position;
 
 public class Spawner extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	private double radius, chance;
 	private int maxSpawns = 5, livingSpawns = 0;
 	private Entity toClone;

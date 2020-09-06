@@ -6,7 +6,6 @@ import entities.Entity;
 import entities.EntityDrop;
 import entities.Health;
 import entities.Path;
-import entities.enemies.Zombie;
 import items.consumables.Food;
 import items.consumables.Potion;
 import main.Program;
@@ -14,6 +13,8 @@ import misc.MathUtils;
 import misc.Point;
 
 public class Cow extends Animal {
+	private static final long serialVersionUID = 1L;
+
 	public Cow(double x, double y) {
 		super(x,y,0.6875,0.5);
 		this.setHealth(new Health(15));

@@ -8,7 +8,8 @@ import main.Program;
 import sound.SoundManager;
 
 public class Food extends Item {
-	
+	private static final long serialVersionUID = 1L;
+
 	private Type type;
 	private boolean consumed = false;
 	

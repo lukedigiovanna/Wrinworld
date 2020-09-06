@@ -10,6 +10,8 @@ import java.util.*;
 import misc.*;
 
 public class SummoningPortal extends Entity {
+	private static final long serialVersionUID = 1L;
+	
 	/*
 	 * holds a list of entities and their summoning frequency
 	 */

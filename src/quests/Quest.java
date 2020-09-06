@@ -2,7 +2,6 @@ package quests;
 
 import java.io.Serializable;
 
-import console.Console;
 import game.Game;
 
 //problem with this method is youre going to have many, many quests

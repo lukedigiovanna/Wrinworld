@@ -6,6 +6,8 @@ import entities.Entity;
 import main.Program;
 
 public class ImageHolder extends Entity {
+	private static final long serialVersionUID = 1L;
+
 	private int lifeSpan;
 	private Image image;
 	

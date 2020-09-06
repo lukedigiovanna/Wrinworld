@@ -65,7 +65,7 @@ public class PlayerInventoryGUI extends GUI {
 		int cellWidth = hotbarWidth/inventory.getHotbarLength();
 		if (mx > hotbarX && mx < hotbarX+hotbarWidth && my > hotbarY && my < hotbarY+hotbarHeight) { //mouse on hotbar
 			//now convert to x, y on the hotbar image
-			int hx = mx-hotbarX, hy = my-hotbarY;
+			int hx = mx-hotbarX;
 			//we only really care about the x value here..
 			index = hx/cellWidth;
 		} else if (mx > invX && mx < invX+invWidth && my > invY && my < invY+invHeight) { //mouse on inventory

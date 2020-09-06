@@ -10,13 +10,14 @@ import entities.damageBox.DamageBox;
 import entities.miscellaneous.Coin;
 import entities.miscellaneous.Particle;
 import entities.player.Player;
-import entities.projectiles.Projectile;
 import main.Program;
 import misc.MathUtils;
 import misc.Vector2D;
 
 //trail of fire that hops around near the player
 public class FireDevil extends Enemy {
+	private static final long serialVersionUID = 1L;
+
 	public FireDevil(double x, double y) {
 		super(x,y,5.0/16,5.0/16);
 		this.health = new Health(12);

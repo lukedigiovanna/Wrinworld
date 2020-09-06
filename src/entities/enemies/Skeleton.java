@@ -17,6 +17,7 @@ import misc.Vector2D;
 import sound.SoundManager;
 
 public class Skeleton extends Enemy {
+	private static final long serialVersionUID = 1L;
 
 	public Skeleton(double x, double y) {
 		super(x, y, 0.5, 1.0);

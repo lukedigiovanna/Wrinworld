@@ -44,7 +44,6 @@ public class PopupBar {
 	
 	//instance vars
 	private String title, message, drawnMessage;
-	private NPC npcOwner = null;
 	
 	public PopupBar(String title, String message) {
 		this.title = title;
@@ -54,7 +53,6 @@ public class PopupBar {
 	
 	public PopupBar(String title, String message, NPC owner) {
 		this(title,message);
-		this.npcOwner = owner;
 	}
 	
 	private int rate = 2;

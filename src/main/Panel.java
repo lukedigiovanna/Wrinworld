@@ -7,6 +7,8 @@ import display.DisplayController;
 import misc.*;
 
 public class Panel extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	public Panel() {
 		this.setFocusable(true);
 		//initiate threads belonging to the panel

@@ -444,8 +444,6 @@ public abstract class WorldObject implements Comparable<WorldObject>, Serializab
 		 (MathUtils.equals(o.getWidth(), getWidth())) &&
 		 MathUtils.equals(this.position.priority, o.position.priority))
 			return 0;
-		double thisArea = this.getWidth()*this.getHeight(),
-				theirArea = o.getWidth()*o.getHeight();
 		
 		//if the have the same position and height and priority then sort by just priority
 		if (this.position.priority > o.position.priority)

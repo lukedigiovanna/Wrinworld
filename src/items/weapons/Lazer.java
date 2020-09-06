@@ -9,6 +9,7 @@ import misc.Dimension;
 import misc.Position;
 
 public class Lazer extends Weapon {
+	private static final long serialVersionUID = 1L;
 
 	public Lazer() {
 		super("Lazer");

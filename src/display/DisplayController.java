@@ -3,12 +3,10 @@ package display;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import console.Console;
 import main.Program;
 import misc.Graphics2;
 import misc.Keyboard;
 import misc.Mouse;
-import sound.MusicManager;
 
 public class DisplayController {
 	private static Overlay overlay = new Overlay();

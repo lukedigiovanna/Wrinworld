@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 
 import animation.Animation;
 import display.DisplayController;
-import game.GameController;
 import misc.*;
 
 //class with information and methods helpful to the application
@@ -148,6 +147,7 @@ public class Program {
 				i.getGraphics().drawImage(img, 0, 0, i.getWidth(), i.getHeight(), null);
 				return i;
 			}
+			br.close();
 			return getImageNotFound();
 		} catch (Exception e) {
 			e.printStackTrace();

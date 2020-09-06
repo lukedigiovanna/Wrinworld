@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 import entities.Entity;
 import entities.player.Player;
-import game.GameController;
 import items.armor.Armor;
 import main.Program;
 import misc.Graphics2;

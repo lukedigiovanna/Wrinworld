@@ -3,7 +3,6 @@ package entities;
 import java.io.Serializable;
 import java.util.*;
 
-import console.Console;
 import entities.miscellaneous.SummoningPortal;
 import entities.npc.*;
 import entities.player.*;

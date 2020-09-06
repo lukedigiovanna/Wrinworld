@@ -1,7 +1,6 @@
 package display;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import main.Program;

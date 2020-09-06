@@ -102,9 +102,10 @@ public class PlayerInventoryGUI extends GUI {
 			} else { //drop the item
 				Item slotItem = inventory.get(index);
 				if (slotItem == null) {
-					inventory.set(index, heldItem, heldCount);
-					heldItem = null;
-					heldCount = 0;
+					if (inventory.set(index, heldItem, heldCount) != null) {
+						heldItem = null;
+						heldCount = 0;
+					}
 					return;
 				}
 				if (slotItem.getID().equals(heldItem.getID())) {
@@ -151,8 +152,8 @@ public class PlayerInventoryGUI extends GUI {
 		inv = inventory.getInventoryImage();
 		g.drawImage(inv, invX, invY, invWidth, invHeight, null);
 		//draw the equipment (not used currently)
-//		equip = inventory.getEquipmentImage();
-//		g.drawImage(equip, equipX, equipY, equipWidth, equipHeight, null);
+		equip = inventory.getEquipmentImage();
+		g.drawImage(equip, equipX, equipY, equipWidth, equipHeight, null);
 		//if the selected item is not null then draw it at the cursor
 		if (heldItem != null) {
 			int mx = Mouse.getXOnDisplay();

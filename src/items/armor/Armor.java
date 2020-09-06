@@ -3,10 +3,14 @@ package items.armor;
 import java.awt.Image;
 
 import items.*;
+import main.Program;
 
 public class Armor extends Item {
-	public Armor() {
+	private Piece piece;
+	
+	public Armor(Piece piece) {
 		super("armor");
+		this.piece = piece;
 	}
 
 	@Override
@@ -32,12 +36,17 @@ public class Armor extends Item {
 	
 	
 	public static enum Piece {
-		WOODEN_HELMET(Type.HELMET);
+		WOODEN_HELMET(Type.HELMET, "woodenhelmet.png", 5);
 		
 		Type type;
+		Image icon;
+		int protection;
 		
-		Piece(Type type) {
+		// protection of an entity is a value from 1 to 100, where 100 is very protected
+		Piece(Type type, String icon, int protection) {
 			this.type = type;
+			this.icon = Program.getImage(icon);
+			this.protection = protection;
 		}
 	}
 	

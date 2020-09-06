@@ -488,10 +488,6 @@ public class Game implements Serializable {
 		return radian;
 	}
 	
-	public void end() {
-		
-	}
-	
 	//GETTERS
 	public Camera camera() {
 		return camera;

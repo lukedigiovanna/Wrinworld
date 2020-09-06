@@ -7,6 +7,7 @@ import java.io.Serializable;
 import entities.Entity;
 import entities.player.Player;
 import game.GameController;
+import items.armor.Armor;
 import main.Program;
 import misc.Graphics2;
 import sound.SoundManager;
@@ -41,6 +42,12 @@ public class Inventory implements Serializable {
 	
 	//returns an array such that ind[0] = item and ind[1] = item count
 	public Object[] set(int index, Item item, int count) {
+		if (index >= 36) {
+			if (!(item instanceof Armor)) {
+				return null;
+			}
+		}
+		
 		Object[] val = {items[index],itemCounts[index]};
 		items[index] = item;
 		itemCounts[index] = count;
@@ -48,7 +55,7 @@ public class Inventory implements Serializable {
 	}
 	
 	public boolean add(Item item) {
-		for (int i = 0; i < items.length; i++) {
+		for (int i = 0; i < items.length-DEFAULT_EQUIPMENT_LENGTH; i++) {
 			if (items[i] == null) {
 				items[i] = item;
 				itemCounts[i] = 1;

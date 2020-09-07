@@ -41,7 +41,7 @@ public class Inventory implements Serializable {
 	
 	//returns an array such that ind[0] = item and ind[1] = item count
 	public Object[] set(int index, Item item, int count) {
-		if (index >= 36) {
+		if (index >= 36 && (items[index] == null || items[index] instanceof Armor)) {
 			if (!(item instanceof Armor)) {
 				return null;
 			} else {

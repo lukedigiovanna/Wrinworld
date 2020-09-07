@@ -7,7 +7,6 @@ import entities.EntityDrop;
 import entities.Health;
 import entities.Path;
 import items.consumables.Food;
-import items.consumables.Potion;
 import main.Program;
 import misc.MathUtils;
 import misc.Point;
@@ -19,11 +18,6 @@ public class Cow extends Animal {
 		super(x,y,0.6875,0.5);
 		this.setHealth(new Health(15));
 		EntityDrop[] drops = {new EntityDrop(0.5,2,new Food(Food.Type.RAW_BEEF)),
-				new EntityDrop(0.5,2,new Food(Food.Type.BERRIES)),
-						new EntityDrop(1,1,new Potion(Potion.Type.REGENERATION)),
-						new EntityDrop(1,1,new Potion(Potion.Type.QUICK_FEET)),
-						new EntityDrop(1,1,new Potion(Potion.Type.HEAL)),
-						new EntityDrop(1,1,new Potion(Potion.Type.POSEIDONS_TOUCH)),
 				};
 		this.drops = drops;
 	}

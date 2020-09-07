@@ -70,7 +70,7 @@ public class Game implements Serializable {
 			new Spawner(0,0,world.width()/2-3,0.005,new Sheep(0,0)),
 		};
 		
-		portalCount = (int)(world.width() * 0.06);
+		portalCount = (int)(world.width() * 0.6);
 		this.entities.setPortalCount(portalCount);
 		SummoningPortal[] portals = new SummoningPortal[portalCount];
 		Entity[] entityOrder = {new Slime(0,0), new FireDevil(0,0), new Minion(0,0), new Zombie(0,0), new Skeleton(0,0), new SwordZombie(0,0), new WildBoar(0,0), new Wizard(0,0), new Mage(0,0), new Giant(0,0)};

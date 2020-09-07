@@ -122,8 +122,10 @@ public class PlayerInventoryGUI extends GUI {
 					inventory.getCounts()[index] = count;
 				} else { //items are different.. so just swap them
 					Object[] temp = inventory.set(index, heldItem, heldCount);
-					heldItem = (Item)temp[0];
-					heldCount = (Integer)temp[1];
+					if (temp != null) {
+						heldItem = (Item)temp[0];
+						heldCount = (Integer)temp[1];
+					}
 				}
 			}
 		}

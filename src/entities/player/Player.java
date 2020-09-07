@@ -51,17 +51,17 @@ public class Player extends Entity {
 //		inventory.add(new Misc(Misc.Type.MANA_STAR));
 //		inventory.add(new Wand(Wand.Type.BLUE_WAND));
 //		inventory.add(new Bow());
-//		inventory.add(new Wand(Wand.Type.FIRE_WAND));
+		// inventory.add(new Wand(Wand.Type.FIRE_WAND));
 //		inventory.add(new Javelin());
 //		inventory.add(new BroadSword(BroadSword.Type.DIAMOND));
-		inventory.add(new Lazer());
+		// inventory.add(new Lazer());
 //		for (int i = 0; i < 16; i++)
 //			inventory.add(new Shuriken());
 		inventory.add(new BroadSword(BroadSword.Type.WOODEN));
-		inventory.add(new Armor(Armor.Piece.WOODEN_HELMET));
-		inventory.add(new Armor(Armor.Piece.WOODEN_CHESTPLATE));
-		inventory.add(new Armor(Armor.Piece.WOODEN_LEGGINGS));
-		inventory.add(new Armor(Armor.Piece.WOODEN_BOOTS));
+		inventory.add(new Armor(Armor.Piece.DIAMOND_HELMET));
+		inventory.add(new Armor(Armor.Piece.DIAMOND_CHESTPLATE));
+		inventory.add(new Armor(Armor.Piece.DIAMOND_LEGGINGS));
+		inventory.add(new Armor(Armor.Piece.DIAMOND_BOOTS));
 		
 		experience = new Experience();
 		
@@ -281,7 +281,8 @@ public class Player extends Entity {
 	
 	public void addMoney(int amount) {
 		this.money+=amount;
-		this.statistic.addEarnings(amount);
+		if (amount > 0)
+			this.statistic.addEarnings(amount);
 		SoundManager.playSound("coindrop");
 	}
 	

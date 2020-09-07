@@ -91,13 +91,13 @@ public abstract class Item implements Serializable {
 	
 	public double cooldownStatusPercent() {
 		if (this.cooldownPeriod == 0)
-			return 1;
+			return 0;
 		return MathUtils.max((double)this.cooldownStatus/this.cooldownPeriod,1.0);
 	}
 	
 	public double loadStatusPercent() {
 		if (this.loadPeriod == 0)
-			return 1 ;
+			return 0;
 		return MathUtils.max((double)this.loadStatus/this.loadPeriod,1.0);
 	}
 	

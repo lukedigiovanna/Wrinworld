@@ -124,7 +124,10 @@ public class Camera implements Serializable {
 						double rot = MathUtils.angle(Mouse.getXOnDisplay(), Mouse.getYOnDisplay(), rx, ry);
 						rot += 3 * Math.PI / 2;
 						int w = disp.getWidth(null) * 4, h = disp.getHeight(null) * 4;
-						double d = 0.5 - 0.5 * item.cooldownStatusPercent();
+						double cooldown = item.cooldownStatusPercent();
+						if (item.getCooldownPeriod() == 0)
+							cooldown = 1;
+						double d = 0.5 - 0.5 * cooldown;
 						int pd = (int)(d / dimension.width * pixelWidth);
 						g.rotate(rot, rx, ry);
 						g.drawImage(disp, (int)rx - w/2, (int)ry - h - pd, w, h, null);

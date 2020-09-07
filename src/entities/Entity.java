@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import display.ImageProcessor;
 import game.Game;
 import items.Inventory;
+import items.Item;
+import items.armor.Armor;
 import entities.animals.Animal;
 import entities.enemies.Enemy;
 import entities.miscellaneous.*;
@@ -43,6 +45,8 @@ public abstract class Entity extends WorldObject {
 	protected Position itemPosition = new Position(0,0); //relative to the entities x, y
 	private double mana = 0, maxMana = 0;
 	private double resistance = 0; //0 defelcts no damage and 1 deflects all damage (effectivly invincible)
+
+	private int armorLevel = 0;
 	
 	private Vector2D[] velocityHistory = new Vector2D[10];
 	
@@ -76,6 +80,7 @@ public abstract class Entity extends WorldObject {
 		super(p,d);
 		game = gameToInitializeTo;
 		inventory = new Inventory(3,this);
+		this.setHasCollision(true);
 	}
 	
 	public enum Team {
@@ -125,10 +130,16 @@ public abstract class Entity extends WorldObject {
 	}
 	
 	protected boolean hurted = false;
+	private static final double MAX_ARMOR_PROTECTION = 0.8;
 	public void hurt(double amount) {
 		if (this.invulernable)
 			return;
 		
+		// apply armor protection
+		double armorPercent = armorLevel/100.0;
+		armorPercent*=MAX_ARMOR_PROTECTION;
+		amount = (amount*(1-armorPercent));
+
 		amount = (amount*(1-this.resistance));
 		
 		this.health.hurt(amount);
@@ -208,9 +219,18 @@ public abstract class Entity extends WorldObject {
 		}
 		
 		individualUpdate();
+
+		// get armor stuff
+		armorLevel = 0;
+		for (int index = 36; index < 40; index++) {
+			Item piece = this.inventory.get(index);
+			if (piece == null || !(piece instanceof Armor))
+				continue;
+			Armor armPiece = (Armor)piece;
+			armorLevel += armPiece.getPiece().protection;
+		}
 		
 		this.addMana(0.25);
-		
 		
 		this.move();
 		velocity.applyAcceleration();

@@ -17,7 +17,6 @@ public class LocationHolder extends Entity {
 
 	@Override
 	public void individualUpdate() {
-		// TODO Auto-generated method stub
 		
 	}
 	

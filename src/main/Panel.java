@@ -16,26 +16,23 @@ public class Panel extends JPanel {
 		paintThread.start();
 	}
 	
-	private int refreshSpeed = 1000/Program.TICKS_PER_SECOND; //DEFAULT
 	private Thread mainThread = new Thread(new Runnable() { public void run() { 
 		while (true) { 
-			long first = System.nanoTime();
-			try { 
-				Thread.sleep(refreshSpeed); 
-			} catch (Exception e) {} 
+			long first = System.currentTimeMillis();
 			mainUpdate(); 
-			tps = 1000000000.0/(System.nanoTime()-first);
+			long wait = 1000/Program.TICKS_PER_SECOND;
+			while (System.currentTimeMillis() - first < wait) continue; // sleeps
+			tps = 1000.0/(System.currentTimeMillis() - first);
 		} 
 	} });
 	
 	private Thread paintThread = new Thread(new Runnable() { public void run() {
 		while (true) {
-			long first = System.nanoTime();
-			try {
-				Thread.sleep(1000/20);
-			} catch (Exception e) {}
-			fps = 1000000000.0/(System.nanoTime()-first);
+			long first = System.currentTimeMillis();
 			repaint();
+			long wait = 1000/Program.TARGET_FPS;
+			while (System.currentTimeMillis() - first < wait) continue; // sleeps
+			fps = 1000.0/(System.currentTimeMillis() - first);
 		}
 	} });
 	

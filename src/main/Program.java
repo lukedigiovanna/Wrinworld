@@ -35,6 +35,7 @@ public class Program {
 			DISPLAY_SCALE = (int)Math.sqrt(DISPLAY_WIDTH*DISPLAY_HEIGHT);
 	
 	public static final int TICKS_PER_SECOND = 20;
+	public static final int TARGET_FPS = 30;
 	
 	public static final Animation FIREWORK_ANIMATION = new Animation("firework","firework_",8);
 	

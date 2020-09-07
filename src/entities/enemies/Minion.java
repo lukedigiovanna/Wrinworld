@@ -36,7 +36,9 @@ public class Minion extends Enemy {
 			radian = this.angle(p);
 		if (this.distance(p) < followDistance && this.distance(p) > minDistance)
 			this.setVelocity(new Vector2D(speed,radian,Vector2D.FORM_BY_RADIAN));
-		if (this.distance(p) < minDistance+0.1 && cooldownStatus >= cooldownPeriod) {
+		if (this.distance(p) < minDistance+0.1) 
+			cooldownStatus++;
+		if (cooldownStatus >= cooldownPeriod) {
 			cooldownStatus = 0;
 			//summon a damage box towards the player
 			double out = 0.6;

@@ -1,8 +1,6 @@
 package world.gridComponent;
 
-import java.awt.*;
 import java.awt.image.*;
-import java.io.Serializable;
 
 import misc.*;
 import misc.Dimension;
@@ -14,7 +12,7 @@ import main.Program;
 //things like: paths, trees, water, wood, chests
 //models can be made with these grid components 
 
-public class GridComponent extends WorldObject implements Serializable {
+public class GridComponent extends WorldObject {
 	private static final long serialVersionUID = 1L;
 	
 	public static final double STANDARD_SIZE = 0.5;

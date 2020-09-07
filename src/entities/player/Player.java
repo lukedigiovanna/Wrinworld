@@ -14,6 +14,7 @@ import sound.SoundManager;
 import animation.Animation;
 import display.popup.PopupBar;
 import items.*;
+import items.armor.Armor;
 import items.weapons.*;
 import world.*;
 
@@ -57,6 +58,10 @@ public class Player extends Entity {
 //		for (int i = 0; i < 16; i++)
 //			inventory.add(new Shuriken());
 		inventory.add(new BroadSword(BroadSword.Type.WOODEN));
+		inventory.add(new Armor(Armor.Piece.WOODEN_HELMET));
+		inventory.add(new Armor(Armor.Piece.WOODEN_CHESTPLATE));
+		inventory.add(new Armor(Armor.Piece.WOODEN_LEGGINGS));
+		inventory.add(new Armor(Armor.Piece.WOODEN_BOOTS));
 		
 		experience = new Experience();
 		

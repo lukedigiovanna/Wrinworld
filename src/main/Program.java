@@ -133,11 +133,13 @@ public class Program {
 						int	w = Integer.parseInt(frameInfo.substring(0,frameInfo.indexOf(","))); 
 						frameInfo = frameInfo.substring(frameInfo.indexOf(",")+5,frameInfo.indexOf("}"));
 						int	h = Integer.parseInt(frameInfo);
-
+						
+						br.close();
 						return spriteSheet.getSubimage(x, y, w, h);
 					}
 				}
 			}
+			br.close();
 			//at this point the image was not in the sprite sheet. so just look for it in the file directory
 			file = new File("library/assets/images/"+filePath);
 			if (file.exists()) {
@@ -147,7 +149,6 @@ public class Program {
 				i.getGraphics().drawImage(img, 0, 0, i.getWidth(), i.getHeight(), null);
 				return i;
 			}
-			br.close();
 			return getImageNotFound();
 		} catch (Exception e) {
 			e.printStackTrace();

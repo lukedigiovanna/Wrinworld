@@ -17,18 +17,21 @@ public class Armor extends Item {
 
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	public Type getPieceType() {
+		return this.piece.type;
 	}
 
 	@Override
 	public Image getDisplayImage() {
-		return null;
+		return this.piece.icon;
 	}
 
 	@Override
 	public Image getIconImage() {
-		return null;
+		return this.piece.icon;
 	}
 
 	@Override
@@ -38,7 +41,10 @@ public class Armor extends Item {
 	
 	
 	public static enum Piece {
-		WOODEN_HELMET(Type.HELMET, "woodenhelmet.png", 5);
+		WOODEN_HELMET(Type.HELMET, "woodenhelmet.png", 5),
+		WOODEN_CHESTPLATE(Type.CHESTPLATE, "woodenchestplate.png", 15),
+		WOODEN_LEGGINGS(Type.LEGGINGS, "woodenleggings.png", 10),
+		WOODEN_BOOTS(Type.BOOTS, "woodenboots.png", 5);
 		
 		Type type;
 		Image icon;
@@ -47,12 +53,12 @@ public class Armor extends Item {
 		// protection of an entity is a value from 1 to 100, where 100 is very protected
 		Piece(Type type, String icon, int protection) {
 			this.type = type;
-			this.icon = Program.getImage(icon);
+			this.icon = Program.getImage("items/armor/"+icon);
 			this.protection = protection;
 		}
 	}
 	
-	private static enum Type {
+	public static enum Type {
 		HELMET, CHESTPLATE, LEGGINGS, BOOTS;
 	}
 }

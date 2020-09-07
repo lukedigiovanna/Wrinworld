@@ -106,4 +106,10 @@ public class SummoningPortal extends Entity {
 	public Image entityImage() {
 		return Program.getImage("entities/misc/portal.png");
 	}
+
+	@Override
+	public void destroy() {
+		this.game.entities().reducePortalCount();
+		super.destroy();
+	}
 }

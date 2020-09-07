@@ -80,13 +80,40 @@ public class EntityList implements Serializable {
 		closest.speak();
 	}
 	
+	private int portalCount = 0;
+	public void setPortalCount(int count) {
+		this.portalCount = count;
+	}
+
+	public void reducePortalCount() {
+		this.portalCount--;
+	}
+
 	public int portalCount() {
-		int count = 0;
-		for (Entity e : entities) {
-			if (e instanceof SummoningPortal)
-				count++;
+		return this.portalCount;
+	}
+
+	/**
+	 * Finds the closest portal to the given entity
+	 * @param e
+	 * @return
+	 */
+	public Entity closestPortal(Entity e) {
+		double closestDistance = 99999;
+		SummoningPortal closest = null;
+		for (int i = 0; i < entities.size(); i++) {
+			if (i >= entities.size())
+				break;
+			Entity p = entities.get(i);
+			if (p instanceof SummoningPortal) {
+				double distance = p.distance(e);
+				if (distance < closestDistance) {
+					closestDistance = distance;
+					closest = (SummoningPortal)p;
+				}
+			}
 		}
-		return count;
+		return closest;
 	}
 	
 	public World getWorld() {

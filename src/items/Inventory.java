@@ -44,6 +44,18 @@ public class Inventory implements Serializable {
 		if (index >= 36) {
 			if (!(item instanceof Armor)) {
 				return null;
+			} else {
+				Armor armor = (Armor)item;
+				if (index == 36 && armor.getPieceType() != Armor.Type.HELMET)
+					return null;
+				else if (index == 37 && armor.getPieceType() != Armor.Type.CHESTPLATE)
+					return null;
+				else if (index == 38 && armor.getPieceType() != Armor.Type.LEGGINGS)
+					return null;
+				else if (index == 39 && armor.getPieceType() != Armor.Type.BOOTS)
+					return null;
+				else if (index == 40)
+					return null;
 			}
 		}
 		

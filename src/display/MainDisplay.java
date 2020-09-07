@@ -71,12 +71,7 @@ public class MainDisplay extends Display {
 		int width = g.getFontMetrics().stringWidth(Program.GAME_NAME);
 		g.setColor(Color.BLACK);
 		Graphics2.outlineText(g, Program.GAME_NAME, getWidth()/2-width/2, getHeight()/3,Color.MAGENTA);
-		
-		g.setColor(Color.GRAY);
-		g.setFont(new Font("Arial",Font.ITALIC,35));
-		String s = "Press any key to continue";
-		Graphics2.outlineText(g, s, getWidth()/2-g.getFontMetrics().stringWidth(s)/2, getHeight()/2+getHeight()/4, Color.BLACK);
-		
+	
 		drawButtons(g);
 	}
 }

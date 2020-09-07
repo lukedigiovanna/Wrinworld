@@ -70,7 +70,8 @@ public class Game implements Serializable {
 			new Spawner(0,0,world.width()/2-3,0.005,new Sheep(0,0)),
 		};
 		
-		portalCount = (int)(world.width() * 0.6);
+		portalCount = (int)(world.width() * 0.06);
+		this.entities.setPortalCount(portalCount);
 		SummoningPortal[] portals = new SummoningPortal[portalCount];
 		Entity[] entityOrder = {new Slime(0,0), new FireDevil(0,0), new Minion(0,0), new Zombie(0,0), new Skeleton(0,0), new SwordZombie(0,0), new WildBoar(0,0), new Wizard(0,0), new Mage(0,0), new Giant(0,0)};
 		double maxDistance = MathUtils.distance(0, 0, -world.width()/2+3, -world.height()/2+3);
@@ -237,6 +238,10 @@ public class Game implements Serializable {
 	
 		initiated = true;
 	}
+
+	public EntityList getEntities() {
+		return this.entities;
+	}
 	
 	public GUI getActiveGUI() {
 		return this.guiManager.getCurrent();
@@ -273,6 +278,9 @@ public class Game implements Serializable {
 	public void update() {
 		if (!initiated)
 			return;
+
+		if (this.entities.portalCount() <= 0)
+			DisplayController.setDisplay(DisplayController.DEAD_DISPLAY);
 		
 		guiManager.update();
 		PopupBar.updateCurrent();
@@ -316,7 +324,7 @@ public class Game implements Serializable {
 	//called by a thread responsible for drawing
 	//SHOULD NOT CONTAIN ANY LOGIC!
 	private BufferedImage img = new BufferedImage(Program.DISPLAY_WIDTH,Program.DISPLAY_HEIGHT,BufferedImage.TYPE_INT_ARGB);
-	private Graphics g = img.getGraphics();
+	private Graphics2D g = img.createGraphics();
 	public Image getView() {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, img.getWidth(), img.getHeight());
@@ -414,6 +422,18 @@ public class Game implements Serializable {
 		g.setColor(Color.BLUE);
 		g.fillRect(x, y, (int)(w*player.getManaPercent()), h);
 		
+		// draw arrow to closest portal
+		Entity closest = this.entities.closestPortal(this.player);
+		double arrowRotation = (closest == null) ? 0 : closest.angle(player) - Math.PI/2; 
+		g.setColor(Color.MAGENTA);
+		g.setStroke(new BasicStroke(3));
+		int arrowX = 30, arrowY = img.getHeight()-30;
+		g.rotate(arrowRotation,arrowX,arrowY);
+		g.drawLine(arrowX,arrowY+8,arrowX,arrowY-8);
+		g.drawLine(arrowX,arrowY-8,arrowX-3,arrowY-5);
+		g.drawLine(arrowX,arrowY-8,arrowX+3,arrowY-5);
+		g.rotate(-arrowRotation,arrowX,arrowY);
+
 		if (!guiManager.getCurrentID().equals("player_inventory")) {
 			BufferedImage hotbarImage = player.getInventory().getHotbarImage();
 			int hotbarWidth = hotbarImage.getWidth();

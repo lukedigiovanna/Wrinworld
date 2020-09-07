@@ -293,6 +293,8 @@ public abstract class Entity extends WorldObject {
 	//accessors, mutators, etc.
 	
 	public void destroy() {
+		if (destroyed) return; // don't destroy if we've already done so
+
 		if (this.dead()) {
 			//summon xp and drop items
 			dropItems();

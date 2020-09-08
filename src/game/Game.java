@@ -324,6 +324,10 @@ public class Game implements Serializable {
 	//called by a thread responsible for drawing
 	//SHOULD NOT CONTAIN ANY LOGIC!
 	private BufferedImage img = new BufferedImage(Program.DISPLAY_WIDTH,Program.DISPLAY_HEIGHT,BufferedImage.TYPE_INT_ARGB);
+	private static final BufferedImage  GENERIC_HELMET = ImageProcessor.transparent(Program.getImage("items/armor/generichelmet.png"), 0.35),
+										GENERIC_CHESTPLATE = ImageProcessor.transparent(Program.getImage("items/armor/genericchestplate.png"), 0.35),
+										GENERIC_LEGGINGS = ImageProcessor.transparent(Program.getImage("items/armor/genericleggings.png"), 0.35),
+										GENERIC_BOOTS = ImageProcessor.transparent(Program.getImage("items/armor/genericboots.png"), 0.35);
 	private Graphics2D g = img.createGraphics();
 	public Image getView() {
 		g.setColor(Color.BLACK);
@@ -432,7 +436,22 @@ public class Game implements Serializable {
 		g.drawLine(arrowX,arrowY+8,arrowX,arrowY-8);
 		g.drawLine(arrowX,arrowY-8,arrowX-3,arrowY-5);
 		g.drawLine(arrowX,arrowY-8,arrowX+3,arrowY-5);
-		g.rotate(-arrowRotation,arrowX,arrowY);
+		g.rotate(-arrowRotation,arrowX,arrowY); 
+
+		// armor display on the right side of the screen
+		int size = 30;
+		int padding = 5;
+		y = img.getHeight() / 2 -size * 2 - padding * 2;
+		x = img.getWidth() - padding - size;
+		g.drawImage((player.getInventory().get(36) == null) ? GENERIC_HELMET : player.getInventory().get(36).getIconImage(), x, y, size, size, null);
+		g.drawImage((player.getInventory().get(37) == null) ? GENERIC_CHESTPLATE : player.getInventory().get(37).getIconImage(), x, y+=(size+padding), size, size, null);
+		g.drawImage((player.getInventory().get(38) == null) ? GENERIC_LEGGINGS : player.getInventory().get(38).getIconImage(), x, y+=(size+padding), size, size, null);
+		g.drawImage((player.getInventory().get(39) == null) ? GENERIC_BOOTS : player.getInventory().get(39).getIconImage(), x, y+=(size+padding), size, size, null);
+		y+=(size+padding);
+		g.setFont(new Font("Arial", Font.ITALIC, 12));
+		g.setColor(Color.WHITE);
+		String s = player.getArmorLevel()+"%";
+		Graphics2.outlineText(g, s, x + size/2 - g.getFontMetrics().stringWidth(s)/2, y+6, Color.BLACK);
 
 		if (!guiManager.getCurrentID().equals("player_inventory")) {
 			BufferedImage hotbarImage = player.getInventory().getHotbarImage();

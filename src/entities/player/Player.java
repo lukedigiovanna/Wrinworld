@@ -58,10 +58,13 @@ public class Player extends Entity {
 //		for (int i = 0; i < 16; i++)
 //			inventory.add(new Shuriken());
 		inventory.add(new BroadSword(BroadSword.Type.WOODEN));
-		inventory.add(new Armor(Armor.Piece.DIAMOND_HELMET));
-		inventory.add(new Armor(Armor.Piece.DIAMOND_CHESTPLATE));
-		inventory.add(new Armor(Armor.Piece.DIAMOND_LEGGINGS));
-		inventory.add(new Armor(Armor.Piece.DIAMOND_BOOTS));
+		// inventory.add(new Armor(Armor.Piece.IRON_HELMET));
+		// inventory.add(new Armor(Armor.Piece.CRYSTAL_CHESTPLATE));
+		// inventory.add(new Armor(Armor.Piece.WOODEN_LEGGINGS));
+		// inventory.add(new Armor(Armor.Piece.CRYSTAL_BOOTS));
+		// inventory.add(new Armor(Armor.Piece.CRYSTAL_HELMET));
+		// inventory.add(new Armor(Armor.Piece.TRAVELERS_BOOTS));
+		// inventory.add(new Armor(Armor.Piece.CAP_OF_VISION));
 		
 		experience = new Experience();
 		
@@ -167,7 +170,9 @@ public class Player extends Entity {
 		this.lives--;
 	}
 	
-	private LightSource ls = new LightSource(getCenterX(),getCenterY(),1);
+	private static final double DEFAULT_LIGHT_SOURCE_POWER = 1;
+	private LightSource ls = new LightSource(getCenterX(),getCenterY(),DEFAULT_LIGHT_SOURCE_POWER);
+	private boolean wearingTravelersBoots = false;
 	private boolean usedItem = false;
 	public void individualUpdate() {
 		Position p = new Position(getCenterX(),getCenterY());
@@ -180,7 +185,7 @@ public class Player extends Entity {
 			beenDeadFor++;
 		this.drops = new EntityDrop[inventory.getItemCount()];
 		int index = 0;
-		for (int i = 0; i < inventory.getItems().length; i++) 
+		for (int i = 0; i < inventory.getAllItems().length; i++) 
 			if (inventory.get(i) != null) {
 				drops[index] = new EntityDrop(1,inventory.getCount(i),inventory.get(i));
 				index++;
@@ -234,6 +239,23 @@ public class Player extends Entity {
 			velocity.addYV(speed);
 		if (move[3])
 			velocity.addXV(speed);
+
+		// handle special armor stuff
+		// cap of vision
+		Item helmet = inventory.get(36);
+		if (helmet != null && ((Armor)helmet).getPiece() == Armor.Piece.CAP_OF_VISION) 
+			this.ls.setPower(DEFAULT_LIGHT_SOURCE_POWER * 3);
+		else
+			this.ls.setPower(DEFAULT_LIGHT_SOURCE_POWER);
+		// traveler's boots
+		Item boots = inventory.get(39);
+		if (!wearingTravelersBoots && boots != null && ((Armor)boots).getPiece() == Armor.Piece.TRAVELERS_BOOTS) {
+			this.setSpeedMultiplier(this.getSpeedMultiplier() + 0.5);
+			wearingTravelersBoots = true;
+		} else if (wearingTravelersBoots) { // then we must have taken them off!
+			this.setSpeedMultiplier(this.getSpeedMultiplier() - 0.5);
+			wearingTravelersBoots = false;
+		}
 	}
 	
 	public double staminaPercent() {

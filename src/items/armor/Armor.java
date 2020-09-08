@@ -15,7 +15,7 @@ public class Armor extends Item {
 	private Piece piece;
 
 	public Armor(Piece piece) {
-		super("armor");
+		super(piece.name);
 		this.piece = piece;
 	}
 
@@ -48,28 +48,42 @@ public class Armor extends Item {
 	}
 
 	public static enum Piece {
-		WOODEN_HELMET(Type.HELMET, "woodenhelmet.png", 5),
-		WOODEN_CHESTPLATE(Type.CHESTPLATE, "woodenchestplate.png", 15),
-		WOODEN_LEGGINGS(Type.LEGGINGS, "woodenleggings.png", 10), 
-		WOODEN_BOOTS(Type.BOOTS, "woodenboots.png", 5),
+		// wooden set
+		WOODEN_HELMET("Wooden Helmet", Type.HELMET, "woodenhelmet.png", 5),
+		WOODEN_CHESTPLATE("Wooden Chestplate", Type.CHESTPLATE, "woodenchestplate.png", 15),
+		WOODEN_LEGGINGS("Wooden Leggings", Type.LEGGINGS, "woodenleggings.png", 10), 
+		WOODEN_BOOTS("Wooden Boots", Type.BOOTS, "woodenboots.png", 5),
 		
-		DIAMOND_HELMET(Type.HELMET, Color.CYAN, 15),
-		DIAMOND_CHESTPLATE(Type.CHESTPLATE, Color.CYAN, 40),
-		DIAMOND_LEGGINGS(Type.LEGGINGS, Color.CYAN, 30),
-		DIAMOND_BOOTS(Type.BOOTS, Color.CYAN, 15);
+		// iron set
+		IRON_HELMET("Iron Helmet", Type.HELMET, Color.LIGHT_GRAY, 10),
+		IRON_CHESTPLATE("Iron Chestplate", Type.CHESTPLATE, Color.LIGHT_GRAY, 30),
+		IRON_LEGGINGS("Iron Leggings", Type.LEGGINGS, Color.LIGHT_GRAY, 20),
+		IRON_BOOTS("Iron Boots", Type.BOOTS, Color.LIGHT_GRAY, 10),
 
+		// crystal set
+		CRYSTAL_HELMET("Crystal Helmet", Type.HELMET, Color.MAGENTA, 15),
+		CRYSTAL_CHESTPLATE("Crystal Chestplate", Type.CHESTPLATE, Color.MAGENTA, 40),
+		CRYSTAL_LEGGINGS("Crystal Leggings", Type.LEGGINGS, Color.MAGENTA, 30),
+		CRYSTAL_BOOTS("Crystal Boots", Type.BOOTS, Color.MAGENTA, 15),
+		
+		// specials
+		TRAVELERS_BOOTS("Traveler\'s Boots", Type.BOOTS, Color.BLUE, 8), // increase the player's speed
+		CAP_OF_VISION("Cap of Vision", Type.HELMET, Color.YELLOW, 4); // increases the strength of the player's light source
+
+		String name;
 		Type type;
 		BufferedImage icon;
 		public int protection;
 		
 		// protection of an entity is a value from 1 to 100, where 100 is very protected
-		Piece(Type type, String icon, int protection) {
+		Piece(String name, Type type, String icon, int protection) {
 			this.type = type;
 			this.icon = Program.getImage("items/armor/"+icon);
 			this.protection = protection;
+			this.name = name;
 		}
 
-		Piece(Type type, Color iconColor, int protection) {
+		Piece(String name, Type type, Color iconColor, int protection) {
 			this.type = type;
 			String typeString = "";
 			switch (type) {
@@ -88,6 +102,7 @@ public class Armor extends Item {
 			this.icon = Program.getImage("items/armor/generic"+typeString+".png");
 			this.icon = ImageProcessor.scaleToColor(this.icon, iconColor);
 			this.protection = protection;
+			this.name = name;
 		}
 	}
 	

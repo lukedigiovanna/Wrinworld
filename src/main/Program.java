@@ -19,9 +19,9 @@ public class Program {
 	public static final String 
 			VERSION = "Indev 0.6",
 			CREATOR = "Luke DiGiovanna",
-			BUSINESS = "LAD Games",
+			BUSINESS = "",
 			GAME_NAME = "Wrinworld",
-			RELEASE_INFO = "Development June 2019",
+			RELEASE_INFO = "Development September 2020",
 			FRAME_NAME = GAME_NAME+" "+VERSION+" | "+RELEASE_INFO;
 	
 	public static JFrame frame = new JFrame(FRAME_NAME);

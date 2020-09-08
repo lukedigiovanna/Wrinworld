@@ -41,7 +41,7 @@ public class Inventory implements Serializable {
 	
 	//returns an array such that ind[0] = item and ind[1] = item count
 	public Object[] set(int index, Item item, int count) {
-		if (index >= 36 && (items[index] == null || items[index] instanceof Armor)) {
+		if (item != null && index >= 36 && (items[index] == null || items[index] instanceof Armor)) {
 			if (!(item instanceof Armor)) {
 				return null;
 			} else {
@@ -88,10 +88,15 @@ public class Inventory implements Serializable {
 	//does not return item stack counts.. rather just the different item slots
 	public Item[] getItems() {
 		Item[] newItems = new Item[getItemCount()];
-		for (int i = 0; i < newItems.length; i++) 
+		int index = 0;
+		for (int i = 0; i < items.length; i++) 
 			if (items[i] != null) 
-				newItems[i] = items[i];
+				newItems[index++] = items[i];
 		return newItems;
+	}
+
+	public Item[] getAllItems() {
+		return this.items;
 	}
 	
 	//number of slots filled

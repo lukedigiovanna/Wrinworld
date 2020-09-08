@@ -46,7 +46,7 @@ public class Skeleton extends Enemy {
 			//summon an arrow
 			Position pp = p.getPositionAtFrame(5);
 			Vector2D velocity = new Vector2D(8,MathUtils.angle(getPosition(),pp)+MathUtils.randomInRange(-Math.PI/8, Math.PI/8),Vector2D.FORM_BY_RADIAN);
-			game.entities().add(new Projectile(Projectile.Type.ARROW,this.getCenterX(),this.getCenterY(),velocity,this));
+			game.entities().add(new Projectile(Projectile.Type.SKELETON_ARROW,this.getCenterX(),this.getCenterY(),velocity,this));
 			SoundManager.playSound("arrowshoot");
 			cooldownStatus = 0;
 		}

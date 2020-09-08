@@ -162,6 +162,10 @@ public abstract class Entity extends WorldObject {
 		}
 		return false;
 	}
+
+	public int getArmorLevel() {
+		return this.armorLevel;
+	}
 	
 	public double getMaxSpeed() {
 		return maxSpeed;
@@ -407,6 +411,7 @@ public abstract class Entity extends WorldObject {
 	}
 	
 	public void setLightSourcePower(double power) {
+		if (this.lightSource == null) return;
 		this.lightSource.setPower(power);
 	}
 	

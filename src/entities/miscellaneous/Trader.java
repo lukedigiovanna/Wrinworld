@@ -8,6 +8,7 @@ import entities.player.Player;
 import items.*;
 import items.consumables.*;
 import items.weapons.*;
+import items.armor.*;
 import main.Program;
 import misc.MathUtils;
 
@@ -50,16 +51,18 @@ public class Trader extends Entity {
 	
 	public static enum Preset {
 		WEAPON_SMITH(
-			new Product(new BroadSword(BroadSword.Type.IRON),30,1),
+			new Product(new BroadSword(BroadSword.Type.IRON),40,1),
 			new Product(new BroadSword(BroadSword.Type.DIAMOND),100,1),
-			new Product(new BroadSword(BroadSword.Type.STONE),20,1),
-			new Product(new Wand(Wand.Type.FIRE_WAND),120,1),
-			new Product(new Wand(Wand.Type.BLUE_WAND),150,1)
+			new Product(new BroadSword(BroadSword.Type.STONE),20,1)
 			),
+		WIZARD(
+			new Product(new Wand(Wand.Type.FIRE_WAND),150,1),
+			new Product(new Wand(Wand.Type.BLUE_WAND),175,1)
+		),
 		WEAPONS2(
 			new Product(new Shuriken(),5,12),
 			new Product(new Javelin(),40,2),
-			new Product(new Lazer(),300,1)
+			new Product(new Lazer(),500,1)
 			),
 		BUTCHERER(
 			new Product(new Food(Food.Type.COOKED_PORK),10,3),
@@ -69,7 +72,25 @@ public class Trader extends Entity {
 		APOTHECIST(
 			new Product(new Potion(Potion.Type.REGENERATION),20,1),
 			new Product(new Potion(Potion.Type.QUICK_FEET),20,2)
-			);
+			),
+		ARMORER1(
+			new Product(new Armor(Armor.Piece.WOODEN_BOOTS), 15, 1),
+			new Product(new Armor(Armor.Piece.WOODEN_LEGGINGS), 30, 1),
+			new Product(new Armor(Armor.Piece.WOODEN_CHESTPLATE), 35, 1),
+			new Product(new Armor(Armor.Piece.WOODEN_HELMET), 15, 1),
+			new Product(new Armor(Armor.Piece.IRON_BOOTS), 30, 1),
+			new Product(new Armor(Armor.Piece.IRON_LEGGINGS), 60, 1),
+			new Product(new Armor(Armor.Piece.IRON_CHESTPLATE), 70, 1),
+			new Product(new Armor(Armor.Piece.IRON_HELMET), 30, 1)
+		),
+		ARMORER2(
+			new Product(new Armor(Armor.Piece.CRYSTAL_BOOTS), 45, 1),
+			new Product(new Armor(Armor.Piece.CRYSTAL_LEGGINGS), 90, 1),
+			new Product(new Armor(Armor.Piece.CRYSTAL_CHESTPLATE), 120, 1),
+			new Product(new Armor(Armor.Piece.CRYSTAL_HELMET), 45, 1),
+			new Product(new Armor(Armor.Piece.CAP_OF_VISION), 30, 1),
+			new Product(new Armor(Armor.Piece.TRAVELERS_BOOTS), 60, 1)
+		);
 		
 		Product[] products;
 	

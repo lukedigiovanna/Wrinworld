@@ -57,7 +57,10 @@ public class Trader extends Entity {
 			),
 		WIZARD(
 			new Product(new Wand(Wand.Type.FIRE_WAND),150,1),
-			new Product(new Wand(Wand.Type.BLUE_WAND),175,1)
+			new Product(new Wand(Wand.Type.ORANGE_WAND),100,1),
+			new Product(new Wand(Wand.Type.BLUE_WAND),175,1),
+			new Product(new Wand(Wand.Type.RED_WAND),250,1),
+			new Product(new Wand(Wand.Type.GREEN_WAND),350,1)
 		),
 		WEAPONS2(
 			new Product(new Shuriken(),5,12),
@@ -71,7 +74,8 @@ public class Trader extends Entity {
 			),
 		APOTHECIST(
 			new Product(new Potion(Potion.Type.REGENERATION),20,1),
-			new Product(new Potion(Potion.Type.QUICK_FEET),20,2)
+			new Product(new Potion(Potion.Type.QUICK_FEET),20,2),
+			new Product(new Potion(Potion.Type.HEAL),20,2)
 			),
 		ARMORER1(
 			new Product(new Armor(Armor.Piece.WOODEN_BOOTS), 15, 1),
@@ -123,7 +127,7 @@ public class Trader extends Entity {
 		if (money < price) //not enough money to buy product
 			return 0;
 		else {
-			player.getInventory().add(p.item);
+			player.getInventory().add(p.item.replicate());
 			p.count--;
 			player.addMoney(-p.price);
 			return price;

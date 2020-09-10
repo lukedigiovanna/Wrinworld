@@ -42,6 +42,12 @@ public class Food extends Item {
 		return type.icon;
 	}
 	
+	public Item replicate() {
+		Item item = new Food(this.type);
+		this.copyInfo(item);
+		return item;
+	}
+
 	public static enum Type {
 		RAW_PORK("Raw Pork","rawpork.png","rawporkicon.png",3.5),
 		COOKED_PORK("Cooked Pork","cookedporkicon.png","cookedporkicon.png",7),

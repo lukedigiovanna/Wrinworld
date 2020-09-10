@@ -29,7 +29,7 @@ public class Player extends Entity {
 	private int money = 0;
 	private boolean sprint = false;
 	private int maxStamina = 300, stamina = maxStamina, minStamina = maxStamina/3;
-	private int lives = 2;
+	private int lives = 0;
 	
 	public Player(double x, double y) {
 		super(x, y, new Dimension(0.5,1));
@@ -49,7 +49,10 @@ public class Player extends Entity {
 		
 		inventory = new Inventory(9*4+5,this);
 //		inventory.add(new Misc(Misc.Type.MANA_STAR));
-//		inventory.add(new Wand(Wand.Type.BLUE_WAND));
+		// inventory.add(new Wand(Wand.Type.ORANGE_WAND));
+		// inventory.add(new Wand(Wand.Type.BLUE_WAND));
+		// inventory.add(new Wand(Wand.Type.RED_WAND));
+		// inventory.add(new Wand(Wand.Type.GREEN_WAND));
 //		inventory.add(new Bow());
 		// inventory.add(new Wand(Wand.Type.FIRE_WAND));
 //		inventory.add(new Javelin());
@@ -127,7 +130,8 @@ public class Player extends Entity {
 					break;
 				//testing
 				case KeyEvent.VK_X:
-					Player.this.hurt(5);
+					// Player.this.hurt(5);
+					experience.addXP(1);
 					break;
 				case KeyEvent.VK_SHIFT:
 					if (stamina >= minStamina)

@@ -3,6 +3,7 @@ package items.weapons;
 import java.awt.Image;
 
 import entities.damageBox.DamageBox;
+import items.Item;
 import main.Program;
 import misc.Dimension;
 import misc.Position;
@@ -13,9 +14,11 @@ public class BroadSword extends Weapon {
 
 	private transient Image displayImage, iconImage;
 	private double damage;
+	private Type type;
 	
 	public BroadSword(Type type) {
 		super(type.name);
+		this.type = type;
 		this.displayImage = type.displayImage;
 		this.iconImage = type.iconImage;
 		this.damage = type.damage;
@@ -54,6 +57,12 @@ public class BroadSword extends Weapon {
 	@Override
 	public boolean used() {
 		return false;
+	}
+
+	public Item replicate() {
+		Item item = new BroadSword(this.type);
+		this.copyInfo(item);
+		return item;
 	}
 
 	@Override

@@ -3,9 +3,7 @@ package main;
 import java.awt.*;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -35,15 +33,21 @@ public class Program {
 			DISPLAY_SCALE = (int)Math.sqrt(DISPLAY_WIDTH*DISPLAY_HEIGHT);
 	
 	public static final int TICKS_PER_SECOND = 20;
-	public static final int TARGET_FPS = 30;
+	public static final int TARGET_FPS = 20;
 	
 	public static final Animation FIREWORK_ANIMATION = new Animation("firework","firework_",8);
 	
 	public static void initWithoutRunning() {
 		DisplayController.setDisplay(DisplayController.MAIN_DISPLAY);
 	}
+
+	public static String HIGHSCORE_FILE_PATH = "library/highscore.value";
 	
 	public static void init() {
+		resetHighscore();
+		writeHighscore(5);
+		System.out.println(getHighscore());
+
 		//this should be the first thing called in the main method
 		panel = new Panel();
 		Keyboard.init();
@@ -199,5 +203,41 @@ public class Program {
 	public static Point getMouseLocationOnScreen() {
 		Point p  = MouseInfo.getPointerInfo().getLocation();
 		return p;
+	}
+
+	/**
+	 * Creates a new high score file with a value of 0
+	 */
+	public static void resetHighscore() {
+		writeHighscore(0);
+	}
+
+	public static void writeHighscore(int score) {
+		try {
+			File file = new File(HIGHSCORE_FILE_PATH);
+			DataOutputStream out = new DataOutputStream(new FileOutputStream(file));
+			// we are using base-256
+			// the first byte represents the 256 component of the number, and the second byte represents the 1 component
+			// allows a high score up to 65534 before overflowing
+			// no one will ever manage a score that high, so it is not worth adding a third byte
+			out.write(score / 256); 
+			out.write(score % 256);
+			out.close();
+		} catch (Exception e) {
+
+		}
+	}
+
+	public static int getHighscore() {
+		try {
+			File file = new File(HIGHSCORE_FILE_PATH);
+			DataInputStream in = new DataInputStream(new FileInputStream(file));
+			int byte1 = in.read();
+			int byte2 = in.read();
+			int score = byte1 * 256 + byte2;
+			return score;
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 }

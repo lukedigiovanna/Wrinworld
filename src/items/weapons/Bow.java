@@ -2,6 +2,7 @@ package items.weapons;
 
 import java.awt.Image;
 import entities.projectiles.Projectile;
+import items.Item;
 import main.Program;
 import misc.Vector2D;
 import sound.SoundManager;
@@ -44,5 +45,11 @@ public class Bow extends Weapon {
 	@Override
 	public Image getIconImage() {
 		return icon;
+	}
+
+	public Item replicate() {
+		Item item = new Bow();
+		this.copyInfo(item);
+		return item;
 	}
 }

@@ -47,6 +47,12 @@ public class Armor extends Item {
 		return false;
 	}
 
+	public Item replicate() {
+		Item item = new Armor(this.piece);
+		this.copyInfo(item);
+		return item;
+	}
+
 	public static enum Piece {
 		// wooden set
 		WOODEN_HELMET("Wooden Helmet", Type.HELMET, "woodenhelmet.png", 5),

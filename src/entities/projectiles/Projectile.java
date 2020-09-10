@@ -48,7 +48,7 @@ public class Projectile extends Entity {
 		BLUE_FIREBALL("fireballs/blueball.png", new Dimension(0.25,0.25), 20.0,5), //d = 20
 		RED_FIREBALL("fireballs/redball.png", new Dimension(0.25,0.25), 40.0,5), //d = 40
 		GREEN_FIREBALL("fireballs/greenball.png", new Dimension(0.25,0.25), 80.0,5), //d = 80
-		ROCK("rock.png",new Dimension(0.375,0.1875),15.0,5),
+		ROCK("rock.png",new Dimension(0.375,0.1875),25.0,5),
 		FIRE("fire","fireprojectile",5,new Dimension(0.375,0.375),2.0,1.5),
 		JAVELIN("javelin.png", new Dimension(1.0,0.25),30,1.5),
 		SHURIKEN("shuriken.png", new Dimension(0.25,0.25),5,1.5);

@@ -48,6 +48,12 @@ public class Miscellaneous extends Item {
 		return type.icon;
 	}
 	
+	public Item replicate() {
+		Item item = new Miscellaneous(this.type);
+		this.copyInfo(item);
+		return item;
+	}
+
 	public static enum Type {
 		BONE("Bone","boneicon.png","boneicon.png"),
 		WOOL("Wool","woolicon.png","woolicon.png"),

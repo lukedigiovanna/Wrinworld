@@ -41,6 +41,12 @@ public class Misc extends Item {
 	public Image getIconImage() {
 		return type.icon;
 	}
+
+	public Item replicate() {
+		Item item = new Misc(this.type);
+		this.copyInfo(item);
+		return item;
+	}
 	
 	public static enum Type {
 		MANA_STAR("Mana Star","manastar.png","manastar.png");

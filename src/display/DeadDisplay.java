@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 import entities.Statistics;
 import game.GameController;
+import main.Program;
 import misc.Graphics2;
 import sound.MusicManager;
 
@@ -58,6 +59,8 @@ public class DeadDisplay extends Display {
 		if (GameController.game().getEntities().portalCount() <= 0) {
 			g.setColor(Color.YELLOW);
 			Graphics2.outlineText(g, "YOU WON!", Graphics2.centerX(g, "YOU WON!"), 200, Color.BLACK, 2);
+			String score = "Score: "+GameController.game().player().getExperience().getXP();
+			Graphics2.outlineText(g, score, Graphics2.centerX(g, score), 230, Color.BLACK, 2);
 			Statistics stats = GameController.game().player().statistic;
 			String[] statStrings = {
 				"Distance Traveled: "+stats.getDistanceTraveled(),
@@ -95,6 +98,10 @@ public class DeadDisplay extends Display {
 		} else {
 			g.setColor(Color.RED);
 			Graphics2.outlineText(g, "YOU DIED!", Graphics2.centerX(g, "YOU DIED!"), 200, Color.BLACK, 2);
+			g.setColor(Color.GREEN.darker());
+			g.setFont(new Font("Arial", Font.BOLD, 17));
+			String score = "Score: "+GameController.game().player().getExperience().getXP();
+			Graphics2.outlineText(g, score, Graphics2.centerX(g, score), 222, Color.BLACK, 2);
 			Statistics stats = GameController.game().player().statistic;
 			String[] statStrings = {
 				"Distance Traveled: "+stats.getDistanceTraveled(),
@@ -123,6 +130,10 @@ public class DeadDisplay extends Display {
 			g.setColor(Color.GRAY);
 			g.setFont(new Font("Arial",Font.ITALIC,30));
 			Graphics2.outlineText(g, "* Click to return home *", Graphics2.centerX(g, "* Click to return home *"), 380, Color.BLACK);
+		}
+		if (GameController.game().player().getExperience().getXP() > Program.getHighscore()) {
+			Program.writeHighscore(GameController.game().player().getExperience().getXP());
+			System.out.println(Program.getHighscore());
 		}
 	}
 }

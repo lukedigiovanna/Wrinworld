@@ -3,6 +3,7 @@ package items.weapons;
 import java.awt.Image;
 
 import entities.projectiles.Projectile;
+import items.Item;
 import main.Program;
 import misc.Vector2D;
 
@@ -41,5 +42,11 @@ public class Shuriken extends Weapon {
 	@Override
 	public Image getIconImage() {
 		return Program.getImage("items/weapons/shurikenicon.png");
+	}
+
+	public Item replicate() {
+		Item item = new Shuriken();
+		this.copyInfo(item);
+		return item;
 	}
 }

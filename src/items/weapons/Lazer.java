@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import entities.damageBox.DamageBox;
 import entities.miscellaneous.ImageHolder;
+import items.Item;
 import main.Program;
 import misc.Dimension;
 import misc.Position;
@@ -49,5 +50,11 @@ public class Lazer extends Weapon {
 	@Override
 	public boolean used() {
 		return false;
+	}
+
+	public Item replicate() {
+		Item item = new Lazer();
+		this.copyInfo(item);
+		return item;
 	}
 }

@@ -6,6 +6,7 @@ import main.Program;
 import misc.Vector2D;
 import entities.projectiles.*;
 import game.GameController;
+import items.Item;
 import misc.MathUtils;
 
 public class Wand extends Weapon {
@@ -22,10 +23,10 @@ public class Wand extends Weapon {
 	}
 	
 	public enum Type {
-		ORANGE_WAND("Weak Orange Wand","orangewandicon.png","orangewandicon.png", 20, 20,15),
+		ORANGE_WAND("Weak Orange Wand","orangewand.png","orangewandicon.png", 20, 20,15),
 		BLUE_WAND("Blue Fireball Wand","bluewand.png","bluewandicon.png",20,20,20),
-		RED_WAND("Red Fireball Wand","redwandicon.png","redwandicon.png",20,20,25),
-		GREEN_WAND("Strong Green Wand","greenwandicon.png","greenwandicon.png",20,20,30),
+		RED_WAND("Red Fireball Wand","redwand.png","redwandicon.png",20,20,25),
+		GREEN_WAND("Strong Green Wand","greenwand.png","greenwandicon.png",20,20,30),
 		FIRE_WAND("Fire Wand","firewand.png","firewandicon.png", 0, 0,1);
 		String name;
 		Image display, icon;
@@ -79,5 +80,11 @@ public class Wand extends Weapon {
 	@Override
 	public boolean used() {
 		return false;
+	}
+
+	public Item replicate() {
+		Item item = new Wand(this.type);
+		this.copyInfo(item);
+		return item;
 	}
 }

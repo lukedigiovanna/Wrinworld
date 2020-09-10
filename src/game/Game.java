@@ -112,6 +112,11 @@ public class Game implements Serializable {
 			System.out.println(p);
 			portals[i] = p;
 		}
+
+		int lootCount = (int)(world.width() * 0.4);
+		for (int i = 0; i < lootCount; i++) {
+			entities.add(new LootBox(MathUtils.randomInRange(-this.world.width()/2, this.world.width()/2), MathUtils.randomInRange(-this.world.height()/2, this.world.height()/2)));
+		}
 	
 		entities.add(player);
 		for (Spawner spawner : spawners)
@@ -356,7 +361,7 @@ public class Game implements Serializable {
 				player.getExperience().toString(),
 				"$"+player.getMoney(),
 				"Portals Left: "+entities.portalCount()+"/"+portalCount,
-				"Lives Left: "+player.getLives()
+				//"Lives Left: "+player.getLives()
 				//"E: "+entities.get().size()
 		};
 		for (int i = 0; i < list.length; i++) 

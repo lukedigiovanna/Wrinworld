@@ -34,10 +34,10 @@ public class StatusEffect {
 		switch (effect) {
 		case REGENERATION:
 			if (this.age%20 == 0)
-				owner.heal(2);
+				owner.heal(3);
 			break;
 		case HEAL:
-			owner.heal(10);
+			owner.heal(2);
 			break;
 		case SLOWNESS:
 			if (age == 0)

@@ -73,6 +73,12 @@ public abstract class Item implements Serializable {
 	
 	public abstract Image getIconImage();
 	
+	public abstract Item replicate();
+
+	protected void copyInfo(Item item) {
+		item.setOwner(this.owner);
+	}
+
 	public void setOwner(Entity owner) {
 		this.owner = owner;
 	}

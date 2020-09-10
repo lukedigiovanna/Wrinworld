@@ -3,6 +3,7 @@ package items.weapons;
 import java.awt.Image;
 
 import entities.projectiles.Projectile;
+import items.Item;
 import main.Program;
 import misc.Vector2D;
 
@@ -38,5 +39,11 @@ public class Javelin extends Weapon {
 	@Override
 	public Image getIconImage() {
 		return Program.getImage("items/weapons/javelinicon.png");
+	}
+
+	public Item replicate() {
+		Item item = new Javelin();
+		this.copyInfo(item);
+		return item;
 	}
 }

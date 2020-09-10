@@ -47,6 +47,12 @@ public class Potion extends Item {
 	public boolean used() {
 		return used;
 	}
+
+	public Item replicate() {
+		Item item = new Potion(this.type);
+		this.copyInfo(item);
+		return item;
+	}
 	
 	public static enum Type {
 		REGENERATION("Regeneration",Color.PINK), //applies 2.5/sec regen for 10 seconds

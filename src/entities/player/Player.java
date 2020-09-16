@@ -130,7 +130,7 @@ public class Player extends Entity {
 					break;
 				//testing
 				case KeyEvent.VK_X:
-					// Player.this.hurt(5);
+					Player.this.hurt(5);
 					experience.addXP(1);
 					break;
 				case KeyEvent.VK_SHIFT:

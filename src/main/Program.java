@@ -44,8 +44,6 @@ public class Program {
 	public static String HIGHSCORE_FILE_PATH = "library/highscore.value";
 	
 	public static void init() {
-		resetHighscore();
-		writeHighscore(5);
 		System.out.println(getHighscore());
 
 		//this should be the first thing called in the main method
@@ -235,6 +233,7 @@ public class Program {
 			int byte1 = in.read();
 			int byte2 = in.read();
 			int score = byte1 * 256 + byte2;
+			in.close();
 			return score;
 		} catch (Exception e) {
 			return 0;

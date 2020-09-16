@@ -323,6 +323,39 @@ public abstract class WorldObject implements Comparable<WorldObject>, Serializab
 			moved+=inc;
 		}
 	}
+
+	public void correctOutOfWall() {
+		if (this.hasCollision() && this.collidingWithWall()) {
+			// find the closest escape
+			double wallX = (int)(this.getX() * 2)/2.0, wallY = (int)(this.getY() * 2)/2.0;
+			double left = this.getCenterX() - wallX, right = wallX + 0.5 - this.getCenterX();
+			double up = this.getCenterY() - wallY, down = wallY + 0.5 - this.getCenterY();
+			// now find the minimum of these
+			double[] d = {left, right, up, down};
+			int minIndex = 0;
+			for (int i = 1; i < d.length; i++) {
+				if (d[i] < d[minIndex]) {
+					minIndex = i;
+				}
+			}
+			switch (minIndex) {
+				case 0:
+					this.setX(wallX-this.getWidth());
+					break;
+				case 1:
+					this.setX(wallX + 0.5);
+					break;
+				case 2:
+					this.setY(wallY-this.getHeight());
+					break;
+				case 3:
+					this.setY(wallY + 0.5);
+					break;
+				default:
+					break;
+			}
+		}
+	}
 	
 	public void setX(double value) {
 		this.position.x = value;

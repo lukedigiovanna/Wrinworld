@@ -240,6 +240,8 @@ public abstract class Entity extends WorldObject {
 		velocity.applyAcceleration();
 		health.update();
 		inventory.update();
+
+		this.correctOutOfWall();
 		
 		//if we are totally out of the world just kill ourself
 		double xBound = game.getWorld().width()/2;
